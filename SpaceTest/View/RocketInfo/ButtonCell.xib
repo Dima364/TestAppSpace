@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="ButtonCell" customModule="SpaceTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="285" height="72"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="285" height="72"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilB-of-LGC">
+                        <rect key="frame" x="0.0" y="0.0" width="285" height="72"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-GY-hfB">
+                                <rect key="frame" x="8" y="16" width="269" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jw6-lD-3ld"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Посмотреть запуски">
+                                    <backgroundConfiguration key="background" cornerRadius="13">
+                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="strokeColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" red="0.088293331190000005" green="0.088293331190000005" blue="0.088293331190000005" alpha="0.99476509349999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="NnY-ej-YKk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nHs-GY-hfB" firstAttribute="centerY" secondItem="ilB-of-LGC" secondAttribute="centerY" id="2Ff-Yb-XkP"/>
+                            <constraint firstAttribute="trailing" secondItem="nHs-GY-hfB" secondAttribute="trailing" constant="8" id="QIr-Ye-IpA"/>
+                            <constraint firstItem="nHs-GY-hfB" firstAttribute="leading" secondItem="ilB-of-LGC" secondAttribute="leading" constant="8" id="XKJ-GV-bVX"/>
+                            <constraint firstItem="nHs-GY-hfB" firstAttribute="centerX" secondItem="ilB-of-LGC" secondAttribute="centerX" id="jng-sQ-UCc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ilB-of-LGC" secondAttribute="bottom" id="0LG-iz-AiU"/>
+                <constraint firstItem="ilB-of-LGC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IIB-ZC-S3c"/>
+                <constraint firstItem="ilB-of-LGC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kDx-nJ-cxD"/>
+                <constraint firstAttribute="trailing" secondItem="ilB-of-LGC" secondAttribute="trailing" id="nH1-CI-JIi"/>
+            </constraints>
+            <size key="customSize" width="285" height="72"/>
+            <connections>
+                <outlet property="button" destination="nHs-GY-hfB" id="oId-7u-ZSc"/>
+            </connections>
+            <point key="canvasLocation" x="306.52173913043481" y="160.04464285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>

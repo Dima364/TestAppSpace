@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="U6b-Vx-4bR" customClass="Header" customModule="SpaceTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8F-bw-NyA">
+                    <rect key="frame" x="5" y="5" width="305" height="40"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="C8F-bw-NyA" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="4cP-ZA-pQr"/>
+                <constraint firstAttribute="trailing" secondItem="C8F-bw-NyA" secondAttribute="trailing" constant="10" id="cRf-tB-CRT"/>
+                <constraint firstAttribute="bottom" secondItem="C8F-bw-NyA" secondAttribute="bottom" constant="5" id="hBd-tC-gyS"/>
+                <constraint firstItem="C8F-bw-NyA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="yER-Xc-Lje"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="C8F-bw-NyA" id="PuH-bi-4CS"/>
+            </connections>
+            <point key="canvasLocation" x="131.29770992366412" y="-11.267605633802818"/>
+        </collectionReusableView>
+    </objects>
+</document>

@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "80AF9289-C339-4FE5-B1A9-DD284DE7EAE5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BC24185-945E-47A2-9072-AB0B7EFF68AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Storyboards/CustomImageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "setNeedsLayout()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2969E6D-8F53-434F-AF53-566AFEC38B84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/View/SettingsCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "toggleChanged(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCC33798-3976-4056-ADDD-BA330491041B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/View/SettingsCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "toggleChanged(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/SpacePageVIewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "RocketPageViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0 - 1dd9efbe1d128b0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.SpacePageViewController.__allocating_init(transitionStyle: __C.UIPageViewControllerTransitionStyle, navigationOrientation: __C.UIPageViewControllerNavigationOrientation, options: Swift.Optional&lt;Swift.Dictionary&lt;__C.UIPageViewControllerOptionsKey, Any&gt;&gt;) -&gt; SpaceTest.SpacePageViewController"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/SpacePageVIewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0 - ec1a861237d7ad14"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.SpacePageViewController.init(transitionStyle: __C.UIPageViewControllerTransitionStyle, navigationOrientation: __C.UIPageViewControllerNavigationOrientation, options: Swift.Optional&lt;Swift.Dictionary&lt;__C.UIPageViewControllerOptionsKey, Any&gt;&gt;) -&gt; SpaceTest.SpacePageViewController"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/SpacePageVIewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0 - acc12168ca1e80d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.SpacePageViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SpaceTest.SpacePageViewController&gt;"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/SpacePageVIewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0 - 82032a2b8edd0fa1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.SpacePageViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SpaceTest.SpacePageViewController&gt;"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/SpacePageVIewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "90F42ECA-1A66-496F-B033-A024B74BAAF0 - 5294c2f806af6eb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.SpacePageViewController.__deallocating_deinit"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/SpacePageVIewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FE40E17-5F5C-41BD-8360-1EFEBB1BAE81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/RocketListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "287C5A84-2800-428D-8016-C34756D03341"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/RocketListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E9A5FF3-B615-431D-A89A-69FA3D2985D1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/LaunchesListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC9224CB-309F-49B6-8BA0-1E27334C1E89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/View/RocketInfo/TitleCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "button(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "986BC0CE-70AC-4F8C-B07A-49D079890111"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "configureHierarchy()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC4AF2A3-F244-474A-8CAA-B8436E80661D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/View/RocketInfo/TitleCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "button(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B698238C-CFC4-4B75-B5F3-4A41310A5500"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "applySnapshots()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65119198-5E25-4686-B41C-B30934307252"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "RocketController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58CCDCE0-938C-49C0-805A-CF806ECF2C83"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CB7EC1B-F5EB-4F98-816B-B7A1BCBCB790"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFB5A5AC-F75C-4F6E-8147-242B7E6FD7A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/LaunchesListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EFB5A5AC-F75C-4F6E-8147-242B7E6FD7A9 - 53b734635b4c7f0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceTest.LaunchesListController.viewDidLoad() -&gt; ()"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/LaunchesListController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "EFB5A5AC-F75C-4F6E-8147-242B7E6FD7A9 - 24e659c4803a850e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SpaceTest.LaunchesResponce) -&gt; () in SpaceTest.LaunchesListController.viewDidLoad() -&gt; ()"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/LaunchesListController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4FBE4B9-82E3-418A-B80E-0FCAA0893857"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "getLaunchesList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "871D5D3C-50A5-46C5-B917-82A0E924A60E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "getLaunchesList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "871D5D3C-50A5-46C5-B917-82A0E924A60E - bb2e731027265248"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SpaceTest.LaunchesResponce) -&gt; () in SpaceTest.ViewController.getLaunchesList() -&gt; ()"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "871D5D3C-50A5-46C5-B917-82A0E924A60E - 83721405bfdd87d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SpaceTest.Doc) -&gt; Swift.Bool in closure #1 (SpaceTest.LaunchesResponce) -&gt; () in SpaceTest.ViewController.getLaunchesList() -&gt; ()"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "977566CF-2D90-4268-8495-CC61F3CD24C1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5289F98-B39E-4649-B7CB-1B3DFB9139BB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Supplements/UserDefaultsWorker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "makeSettingsDefaults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FF99729-71DA-4CD7-8D91-7C13B96F0F1A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Model/RocketSectionCreator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getHorizontalItem(forDimension:data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D2A4BCD-22FA-4F6E-8F40-2D5CCA553160"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Model/RocketSectionCreator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getHorizontalItem(forDimension:data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3C44177-B891-41E3-9205-3892DEE07BD6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CA577EC-E35B-47CB-A01D-2E9E3C9971F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26CED0F7-86FB-4122-9686-12A8844511AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "26CED0F7-86FB-4122-9686-12A8844511AA - 3828c4b0a190c8d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for SpaceTest.WebService.load&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(SpaceTest.Resource&lt;&#x3c4;_0_0&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Service/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "2572">
+               </Location>
+               <Location
+                  uuid = "26CED0F7-86FB-4122-9686-12A8844511AA - a5277ee21d75c5e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for SpaceTest.WebService.load&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(SpaceTest.Resource&lt;&#x3c4;_0_0&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Service/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "26CED0F7-86FB-4122-9686-12A8844511AA - b4b5e46faf784d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for SpaceTest.WebService.load&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(SpaceTest.Resource&lt;&#x3c4;_0_0&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Service/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "26CED0F7-86FB-4122-9686-12A8844511AA - f2db9b7c299ae77b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for SpaceTest.WebService.load&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(SpaceTest.Resource&lt;&#x3c4;_0_0&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Service/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "26CED0F7-86FB-4122-9686-12A8844511AA - f2db9b7c299ae6d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for SpaceTest.WebService.load&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(SpaceTest.Resource&lt;&#x3c4;_0_0&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "SpaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitrijpomin/Developer/SpaceTest/SpaceTest/Service/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDAA897B-9EB2-47C3-83C4-24FF71334BB7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EF87685-CC31-4788-85BB-2D25408DB031"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6F17938-BB83-41F9-914D-F2020AE96087"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceTest/Service/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
