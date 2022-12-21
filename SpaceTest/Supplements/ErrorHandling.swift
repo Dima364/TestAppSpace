@@ -11,6 +11,7 @@ enum NetworkError: Error {
   case badURL
   case failedToDecode
   case failedToEncode
+  case dataIsEmpty
 }
 
 enum ErrorStrings: Error {

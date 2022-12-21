@@ -47,9 +47,9 @@ extension SettingsController: UITableViewDataSource {
     }
 
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsCell,
-    let userDefaultsSymbol = settings.string(forKey: hint),
-    let symbol = MetricSymbols(rawValue: userDefaultsSymbol),
-    let selectedIndex = metrics.firstIndex(of: symbol.rawValue)
+      let userDefaultsSymbol = settings.string(forKey: hint),
+      let symbol = MetricSymbols(rawValue: userDefaultsSymbol),
+      let selectedIndex = metrics.firstIndex(of: symbol.rawValue)
     else {
       return UITableViewCell()
     }

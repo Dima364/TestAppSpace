@@ -83,8 +83,11 @@ final class NetworkService {
 
   private func load<T: Decodable>(url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
     let task = session.dataTask(with: url) { data, _, error in
-      guard let data = data, error == nil else {
-        completion(.failure(error!))
+      if let error {
+        completion(.failure(error))
+      }
+      guard let data else {
+        completion(.failure(NetworkError.dataIsEmpty))
         return
       }
       do {
