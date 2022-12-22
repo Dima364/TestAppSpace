@@ -9,8 +9,8 @@ import UIKit
 
 final class RocketPageViewController: UIPageViewController {
 
-  private let networkService = NetworkService()
-  private let userDefaultsService = UserDefaultsService()
+  private let networkService: NetworkService
+  private let userDefaultsService: UserDefaultsService
   private var controllerList = [UIViewController]()
 
   override func viewDidLoad() {
@@ -18,30 +18,34 @@ final class RocketPageViewController: UIPageViewController {
     self.dataSource = self
 
     userDefaultsService.makeSettingsDefaults()
-
     getControllers()
   }
 
+  required init?(coder: NSCoder) {
+    userDefaultsService = UserDefaultsService()
+    networkService = NetworkService()
+    super.init(coder: coder)
+  }
+
   private func getControllers() {
-    networkService.getRockets { result in
-      switch result {
-      case .failure(let error):
-        self.presentAlert(withMessage: error.localizedDescription)
-      case .success(let rockets):
-        for rocket in rockets {
-          let mainController = self.storyboard?.instantiateViewController(identifier: "mainVC") { coder ->
-            RocketController? in
-            RocketController(
-              coder: coder,
-              rocketData: rocket
-            )
+    self.networkService.getRockets { result in
+      DispatchQueue.main.async {
+        switch result {
+        case .failure(let error):
+          self.presentAlert(withMessage: error.localizedDescription)
+        case .success(let rockets):
+          self.controllerList = rockets.compactMap { rocket in
+            let rocketController = self.storyboard?.instantiateViewController(identifier: "mainVC") { coder ->
+              RocketController? in
+              RocketController(
+                coder: coder,
+                rocketData: rocket
+              )
+            }
+            return rocketController
           }
-          guard let unwrapController = mainController else {
-            return
-          }
-          self.controllerList.append(unwrapController)
+          self.setViewControllers([self.controllerList[0]], direction: .forward, animated: true, completion: nil)
         }
-        self.setViewControllers([self.controllerList[0]], direction: .forward, animated: true, completion: nil)
       }
     }
   }

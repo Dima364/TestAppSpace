@@ -31,4 +31,8 @@ final class UserDefaultsService {
     }
     return metricSymbol
   }
+
+  func setMetricType(metricType: MetricSymbols, forDimension dimension: Hints) {
+    userDefaults.set(metricType.rawValue, forKey: dimension.rawValue)
+  }
 }

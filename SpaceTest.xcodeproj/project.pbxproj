@@ -16,8 +16,8 @@
 		397382D228882268001A0122 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397382D028882268001A0122 /* ButtonCell.xib */; };
 		397382DB2897F199001A0122 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397382DA2897F199001A0122 /* Rocket.swift */; };
 		39962005286D03DE00D38313 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39962004286D03DE00D38313 /* ImageCell.xib */; };
-		39962008286D105000D38313 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39962006286D105000D38313 /* CustomCollectionViewCell.swift */; };
-		39962009286D105000D38313 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39962007286D105000D38313 /* CustomCollectionViewCell.xib */; };
+		39962008286D105000D38313 /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39962006286D105000D38313 /* HorizontalCell.swift */; };
+		39962009286D105000D38313 /* HorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39962007286D105000D38313 /* HorizontalCell.xib */; };
 		3996200B286D27A300D38313 /* RocketPageVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3996200A286D27A300D38313 /* RocketPageVIewController.swift */; };
 		399D0BBB28682781008430F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D0BBA28682781008430F0 /* AppDelegate.swift */; };
 		399D0BBD28682781008430F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D0BBC28682781008430F0 /* SceneDelegate.swift */; };
@@ -51,8 +51,8 @@
 		397382D028882268001A0122 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		397382DA2897F199001A0122 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		39962004286D03DE00D38313 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
-		39962006286D105000D38313 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		39962007286D105000D38313 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		39962006286D105000D38313 /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
+		39962007286D105000D38313 /* HorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCell.xib; sourceTree = "<group>"; };
 		3996200A286D27A300D38313 /* RocketPageVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPageVIewController.swift; sourceTree = "<group>"; };
 		399D0BB728682781008430F0 /* SpaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399D0BBA28682781008430F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 			children = (
 				397382CF28882268001A0122 /* ButtonCell.swift */,
 				397382D028882268001A0122 /* ButtonCell.xib */,
-				39962006286D105000D38313 /* CustomCollectionViewCell.swift */,
-				39962007286D105000D38313 /* CustomCollectionViewCell.xib */,
+				39962006286D105000D38313 /* HorizontalCell.swift */,
+				39962007286D105000D38313 /* HorizontalCell.xib */,
 				39962004286D03DE00D38313 /* ImageCell.xib */,
 				3963A246287A0ACC0012EFD5 /* ImageCell.swift */,
 				39C6C733293DE45F00D40E37 /* Header.swift */,
@@ -220,6 +220,7 @@
 		39C1C77E2869B39D00207823 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				39F1FCED2928A56700A7CA1B /* UserDefaultsService.swift */,
 				39AF9BA92951EB0000A64C9E /* NetworkService.swift */,
 			);
 			path = Service;
@@ -230,7 +231,6 @@
 			children = (
 				39AF9B9E2951A71200A64C9E /* BaseClassExtension */,
 				39ED885529266F1400ED0E5A /* ErrorHandling.swift */,
-				39F1FCED2928A56700A7CA1B /* UserDefaultsService.swift */,
 			);
 			path = Supplements;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				399D0BC728682782008430F0 /* LaunchScreen.storyboard in Resources */,
 				39962005286D03DE00D38313 /* ImageCell.xib in Resources */,
 				399D0BC428682782008430F0 /* Assets.xcassets in Resources */,
-				39962009286D105000D38313 /* CustomCollectionViewCell.xib in Resources */,
+				39962009286D105000D38313 /* HorizontalCell.xib in Resources */,
 				39C6C736293DE45F00D40E37 /* Header.xib in Resources */,
 				3903E4F329028A9F009B1A42 /* InfoCell.xib in Resources */,
 				399D0BC228682781008430F0 /* Main.storyboard in Resources */,
@@ -345,7 +345,7 @@
 				3996200B286D27A300D38313 /* RocketPageVIewController.swift in Sources */,
 				3903E4F529028CB7009B1A42 /* InfoCell.swift in Sources */,
 				399D0BBF28682781008430F0 /* RocketController.swift in Sources */,
-				39962008286D105000D38313 /* CustomCollectionViewCell.swift in Sources */,
+				39962008286D105000D38313 /* HorizontalCell.swift in Sources */,
 				39DB61C929220FBD0015BBC8 /* LaunchesTableController.swift in Sources */,
 				39AF9BA02951A74D00A64C9E /* DateExtension.swift in Sources */,
 				3963A247287A0ACC0012EFD5 /* ImageCell.swift in Sources */,

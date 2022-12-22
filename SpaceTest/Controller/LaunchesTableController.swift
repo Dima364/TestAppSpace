@@ -9,12 +9,13 @@ import UIKit
 
 final class LaunchesTableController: UITableViewController {
 
-  private let networkService = NetworkService()
   private var data: [RocketLaunch.Doc] = []
+  private let networkService: NetworkService
   private let rocketId: String
 
-  init?(coder: NSCoder, rocketId: String, rocketName: String) {
+  required init?(coder: NSCoder, rocketId: String, rocketName: String) {
     self.rocketId = rocketId
+    networkService = NetworkService()
     super.init(coder: coder)
     self.title = rocketName
   }
@@ -23,7 +24,7 @@ final class LaunchesTableController: UITableViewController {
   required init?(coder: NSCoder) {
     fatalError("init(coder:_ is not implemented")
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     getLaunchesList()
@@ -31,30 +32,27 @@ final class LaunchesTableController: UITableViewController {
 
   private func getLaunchesList() {
     networkService.getLaunches(forRocket: rocketId) { result in
-      switch result {
-      case .success(let launches):
-        if launches.docs.isEmpty {
-          self.presentAlert(withMessage: "Запусков не найдено")
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let launches):
+          if launches.docs.isEmpty {
+            self.presentAlert(withMessage: "Запусков не найдено")
+          }
+          self.data = launches.docs
+          self.tableView.reloadData()
+        case .failure(let error):
+          self.presentAlert(withMessage: error.localizedDescription)
         }
-        self.data = launches.docs
-        self.tableView.reloadData()
-      case .failure(let error):
-        self.presentAlert(withMessage: error.localizedDescription)
       }
     }
   }
-}
 
-// MARK: - TableDelegate configuration
-extension LaunchesTableController {
+  // MARK: - TableDelegate configuration
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     100
   }
-}
 
-// MARK: - DataSource configuration
-extension LaunchesTableController {
-
+  // MARK: - DataSource configuration
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = self.tableView.dequeueReusableCell(
       withIdentifier: "LaunchesTableCell",

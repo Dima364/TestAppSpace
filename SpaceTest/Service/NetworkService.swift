@@ -36,16 +36,14 @@ final class NetworkService {
     }
   }
 
-  private let jsonDecoder = JSONDecoder()
   private let session = URLSession.shared
   private let dateFormatter = DateFormatter()
 
-  init() {
-    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-  }
-
   func getRockets(completion: @escaping (Result<[Rocket], Error>) -> Void) {
     dateFormatter.dateFormat = DateFormatType.rocketResponce.description
+
+    let jsonDecoder = JSONDecoder()
+    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
     jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
 
     guard let url = URL(string: ApiUrls.rockets) else {
@@ -53,11 +51,14 @@ final class NetworkService {
       return
     }
 
-    load(url: URLRequest(url: url), completion: completion)
+    load(urlRequest: URLRequest(url: url), decoder: jsonDecoder, completion: completion)
   }
 
   func getLaunches(forRocket rocket: String, completion: @escaping (Result<RocketLaunch, Error>) -> Void) {
     dateFormatter.dateFormat = DateFormatType.launchesResponce.description
+
+    let jsonDecoder = JSONDecoder()
+    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
     jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
 
     guard let url = URL(string: ApiUrls.launches) else {
@@ -78,11 +79,11 @@ final class NetworkService {
 
     request.httpMethod = "POST"
 
-    load(url: request, completion: completion)
+    load(urlRequest: request, decoder: jsonDecoder, completion: completion)
   }
 
-  private func load<T: Decodable>(url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
-    let task = session.dataTask(with: url) { data, _, error in
+  private func load<T: Decodable>(urlRequest: URLRequest, decoder: JSONDecoder, completion: @escaping (Result<T, Error>) -> Void) {
+    let task = session.dataTask(with: urlRequest) { data, _, error in
       if let error {
         completion(.failure(error))
       }
@@ -91,10 +92,8 @@ final class NetworkService {
         return
       }
       do {
-        let result = try  self.jsonDecoder.decode(T.self, from: data)
-        DispatchQueue.main.async {
-          completion(.success(result))
-        }
+        let result = try  decoder.decode(T.self, from: data)
+        completion(.success(result))
       } catch {
         completion(.failure(NetworkError.failedToDecode))
         return

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomCollectionViewCell: UICollectionViewCell {
+final class HorizontalCell: UICollectionViewCell {
 
   @IBOutlet private var value: UILabel!
   @IBOutlet private var hint: UILabel!

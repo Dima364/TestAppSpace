@@ -7,13 +7,14 @@ import UIKit
 
 final class RocketController: UIViewController {
 
-  private let sectionCreator = RocketSectionCreator()
   private let rawModel: Rocket
-  private var dataSource: UICollectionViewDiffableDataSource<Section, Section.Item>!
+  private var sectionCreator: RocketSectionCreator
+  private lazy var dataSource = configureDataSource()
 
   @IBOutlet private var collectionView: UICollectionView!
 
   init?(coder: NSCoder, rocketData: Rocket) {
+    sectionCreator = RocketSectionCreator()
     rawModel = rocketData
     super.init(coder: coder)
   }
@@ -25,7 +26,6 @@ final class RocketController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureDataSource()
     makeSections(fromData: rawModel)
   }
 
@@ -42,7 +42,7 @@ final class RocketController: UIViewController {
   @IBSegueAction
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
     guard let settingsController = SettingsController(coder: coder) else {
-      return SettingsController()
+      return SettingsController(coder: coder)
     }
     settingsController.settingsUpdate = {
       self.makeSections(fromData: self.rawModel)
@@ -74,33 +74,27 @@ final class RocketController: UIViewController {
 
 // MARK: - dataSource configuration
 extension RocketController {
-  private func configureDataSource() {
+  private func configureDataSource() -> UICollectionViewDiffableDataSource<Section, Section.Item> {
     collectionView.collectionViewLayout = createLayout()
 
     let imageNib = UINib(nibName: ImageCell.reuseIdentifier, bundle: nil)
     let imageRegistration = UICollectionView.CellRegistration<ImageCell, Section.Item>(cellNib: imageNib) { cell, _, item in
-      guard case let .title(image, title) = item else {
-        return
-      }
+      guard case let .title(image, title) = item else { return }
       cell.configure(image: image, title: title)
       cell.buttonPressed = { [weak self] in
         self?.performSegue(withIdentifier: "settingsSegue", sender: self)
       }
     }
 
-    let hNib = UINib(nibName: CustomCollectionViewCell.reuseIdentifier, bundle: nil)
-    let hRegistration = UICollectionView.CellRegistration<CustomCollectionViewCell, Section.Item>(cellNib: hNib) { cell, _, item in
-      guard case let .value(value, hint, _) = item else {
-        return
-      }
+    let horizontalNib = UINib(nibName: HorizontalCell.reuseIdentifier, bundle: nil)
+    let horizontalRegistration = UICollectionView.CellRegistration<HorizontalCell, Section.Item>(cellNib: horizontalNib) { cell, _, item in
+      guard case let .value(value, hint, _) = item else { return }
       cell.configure(value: value, hint: hint)
     }
 
-    let vNib = UINib(nibName: InfoCell.reuseIdentifier, bundle: nil)
-    let vRegistration = UICollectionView.CellRegistration<InfoCell, Section.Item>(cellNib: vNib) { cell, _, item in
-      guard case let .value(value, hint, _) = item else {
-        return
-      }
+    let infoNib = UINib(nibName: InfoCell.reuseIdentifier, bundle: nil)
+    let infoRegistration = UICollectionView.CellRegistration<InfoCell, Section.Item>(cellNib: infoNib) { cell, _, item in
+      guard case let .value(value, hint, _) = item else { return }
       cell.configure(value: value, hint: hint)
     }
 
@@ -118,25 +112,27 @@ extension RocketController {
       supplementaryView.configure(withTitle: self.dataSource.snapshot().sectionIdentifiers[indexPath.section].title)
     }
 
-    dataSource = UICollectionViewDiffableDataSource<Section, Section.Item>(
-      collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell? in
-        let sectionItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+    dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item ->
+      UICollectionViewCell? in
+      let sectionItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
 
-        switch sectionItem.sectionType {
-        case .imageAndTitle:
-          return collectionView.dequeueConfiguredReusableCell(using: imageRegistration, for: indexPath, item: item)
-        case .button:
-          return collectionView.dequeueConfiguredReusableCell(using: buttonRegistration, for: indexPath, item: item)
-        case .hScroll:
-          return collectionView.dequeueConfiguredReusableCell(using: hRegistration, for: indexPath, item: item)
-        case .vScroll:
-          return collectionView.dequeueConfiguredReusableCell(using: vRegistration, for: indexPath, item: item)
-        }
+      switch sectionItem.sectionType {
+      case .imageAndTitle:
+        return collectionView.dequeueConfiguredReusableCell(using: imageRegistration, for: indexPath, item: item)
+      case .button:
+        return collectionView.dequeueConfiguredReusableCell(using: buttonRegistration, for: indexPath, item: item)
+      case .hScroll:
+        return collectionView.dequeueConfiguredReusableCell(using: horizontalRegistration, for: indexPath, item: item)
+      case .vScroll:
+        return collectionView.dequeueConfiguredReusableCell(using: infoRegistration, for: indexPath, item: item)
+      }
     }
 
     dataSource.supplementaryViewProvider = { [weak self] _, _, index in
       self?.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: index)
     }
+
+    return dataSource
   }
 }
 
