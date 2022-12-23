@@ -11,23 +11,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="Z5Q-oU-SZs" userLabel="InfoCell" customClass="InfoCell" customModule="SpaceTest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fJf-My-WFq">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WMS-4t-0yN">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z84-eR-HtC" userLabel="Hint">
-                                <rect key="frame" x="0.0" y="14.999999999999998" width="196.66666666666666" height="20.333333333333329"/>
+                                <rect key="frame" x="0.0" y="14.999999999999998" width="141.66666666666666" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YN-Ra-LR7" userLabel="Value">
-                                <rect key="frame" x="196.66666666666663" y="14.999999999999998" width="196.33333333333337" height="20.333333333333329"/>
+                                <rect key="frame" x="141.66666666666663" y="14.999999999999998" width="141.33333333333337" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -42,12 +42,12 @@
                     <constraint firstItem="WMS-4t-0yN" firstAttribute="leading" secondItem="fJf-My-WFq" secondAttribute="leading" id="rrl-la-0df"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="393" height="161"/>
+            <size key="customSize" width="306" height="161"/>
             <connections>
                 <outlet property="hint" destination="Z84-eR-HtC" id="mPp-30-NwB"/>
                 <outlet property="value" destination="7YN-Ra-LR7" id="hBY-7U-IYc"/>
             </connections>
-            <point key="canvasLocation" x="-677.69230769230762" y="-193.00947867298578"/>
+            <point key="canvasLocation" x="-744.61538461538464" y="-193.3649289099526"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -21,10 +21,19 @@ final class RocketPageViewController: UIPageViewController {
     getControllers()
   }
 
-  required init?(coder: NSCoder) {
-    userDefaultsService = UserDefaultsService()
-    networkService = NetworkService()
+  init?(
+    coder: NSCoder,
+    userDefaultsService: UserDefaultsService = UserDefaultsService(),
+    networkService: NetworkService = NetworkService()
+  ) {
+    self.userDefaultsService = userDefaultsService
+    self.networkService = NetworkService()
     super.init(coder: coder)
+  }
+
+  @available (*, unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   private func getControllers() {
@@ -35,29 +44,28 @@ final class RocketPageViewController: UIPageViewController {
           self.presentAlert(withMessage: error.localizedDescription)
         case .success(let rockets):
           self.controllerList = rockets.compactMap { rocket in
-            let rocketController = self.storyboard?.instantiateViewController(identifier: "mainVC") { coder ->
-              RocketController? in
+            self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
               RocketController(
                 coder: coder,
                 rocketData: rocket
               )
             }
-            return rocketController
           }
-          self.setViewControllers([self.controllerList[0]], direction: .forward, animated: true, completion: nil)
+          self.setViewControllers([self.controllerList[0]], direction: .forward, animated: true)
         }
       }
     }
   }
 }
 
+// MARK: - UIPageViewControllerDataSource
 extension RocketPageViewController: UIPageViewControllerDataSource {
 
   func pageViewController(
     _ pageViewController: UIPageViewController,
     viewControllerBefore viewController: UIViewController
   ) -> UIViewController? {
-    guard let currentIndex = controllerList.firstIndex(of: viewController) else { return nil}
+    guard let currentIndex = controllerList.firstIndex(of: viewController) else { return nil }
 
     if currentIndex == 0 {
       return controllerList.last

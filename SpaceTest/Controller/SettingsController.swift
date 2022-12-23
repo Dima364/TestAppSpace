@@ -7,8 +7,8 @@
 import UIKit
 
 final class SettingsController: UIViewController {
-  typealias Hints = RocketSectionCreator.Hints
-  typealias MetricSymbols = RocketSectionCreator.MetricSymbols
+  private typealias Hints = RocketSectionCreator.Hints
+  private typealias MetricSymbols = RocketSectionCreator.MetricSymbols
 
   private let userDefaultsService: UserDefaultsService
   private let settingsItemsType = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
@@ -33,14 +33,14 @@ final class SettingsController: UIViewController {
   }
 }
 
-// MARK: - DataSource configuration
+// MARK: - UITableViewDataSource
 extension SettingsController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     settingsItemsType.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var metrics: [String] = []
+    let metrics: [String]
     let dimension = settingsItemsType[indexPath.row]
 
     switch dimension {
@@ -49,7 +49,7 @@ extension SettingsController: UITableViewDataSource {
     case .mass, .payloadWeight:
       metrics = [MetricSymbols.kilos.rawValue, MetricSymbols.pounds.rawValue]
     default:
-      break
+      metrics = []
     }
 
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsCell,

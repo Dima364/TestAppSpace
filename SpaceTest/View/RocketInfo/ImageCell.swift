@@ -10,15 +10,15 @@ import UIKit
 final class ImageCell: UICollectionViewCell {
 
   @IBOutlet private var imageView: UIImageView!
-  @IBOutlet private var title: UILabel!
+  @IBOutlet private var rocketTitle: UILabel!
   @IBOutlet private var settingButton: UIView!
   @IBOutlet private var roundView: UIView!
 
-  var buttonPressed: (() -> Void)?
+  var openSettings: (() -> Void)?
 
   @IBAction
   private func buttonClick(_ sender: UIButton) {
-    buttonPressed?()
+    openSettings?()
   }
 
   override func awakeFromNib() {
@@ -29,11 +29,11 @@ final class ImageCell: UICollectionViewCell {
 
   override func prepareForReuse() {
     super.prepareForReuse()
-    imageView.kf.cancelDownloadTask()
+    self.imageView.kf.cancelDownloadTask()
   }
 
   func configure(image: URL, title: String) {
-    self.title.text = title
-    imageView.kf.setImage(with: image)
+    self.rocketTitle.text = title
+    self.imageView.kf.setImage(with: image)
   }
 }

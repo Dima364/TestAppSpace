@@ -12,6 +12,6 @@ final class Header: UICollectionReusableView {
   @IBOutlet private var titleLabel: UILabel!
 
   func configure(withTitle title: String?) {
-    titleLabel.text = title
+    self.titleLabel.text = title
   }
 }

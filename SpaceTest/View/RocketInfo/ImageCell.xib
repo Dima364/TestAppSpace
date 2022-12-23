@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="331" height="579"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kingfisher-9.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oEQ-LK-bVC">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oEQ-LK-bVC">
                         <rect key="frame" x="0.0" y="0.0" width="331" height="579"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1I-PX-NO3">
@@ -68,15 +68,14 @@
             <size key="customSize" width="456" height="579"/>
             <connections>
                 <outlet property="imageView" destination="oEQ-LK-bVC" id="8e9-fM-86u"/>
+                <outlet property="rocketTitle" destination="aQ5-IK-YW9" id="sV0-9x-1wp"/>
                 <outlet property="roundView" destination="J1I-PX-NO3" id="DhV-g4-b8I"/>
                 <outlet property="settingButton" destination="Lwp-Jy-iEf" id="fwa-WC-oZd"/>
-                <outlet property="title" destination="aQ5-IK-YW9" id="sV0-9x-1wp"/>
             </connections>
             <point key="canvasLocation" x="388.40579710144931" y="309.04017857142856"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="kingfisher-9.jpg" width="250" height="250"/>
         <image name="settings-xxl" width="30" height="30"/>
     </resources>
 </document>
