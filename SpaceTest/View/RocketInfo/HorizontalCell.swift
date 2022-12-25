@@ -11,7 +11,7 @@ final class HorizontalCell: UICollectionViewCell {
 
   @IBOutlet private var value: UILabel!
   @IBOutlet private var hint: UILabel!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
     self.layer.cornerRadius = 30

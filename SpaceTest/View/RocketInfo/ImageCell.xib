@@ -72,7 +72,7 @@
                 <outlet property="roundView" destination="J1I-PX-NO3" id="DhV-g4-b8I"/>
                 <outlet property="settingButton" destination="Lwp-Jy-iEf" id="fwa-WC-oZd"/>
             </connections>
-            <point key="canvasLocation" x="388.40579710144931" y="309.04017857142856"/>
+            <point key="canvasLocation" x="387.68115942028987" y="309.04017857142856"/>
         </collectionViewCell>
     </objects>
     <resources>

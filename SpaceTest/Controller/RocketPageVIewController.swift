@@ -36,22 +36,30 @@ final class RocketPageViewController: UIPageViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  private func setControllersList(fromRockets rockets: [Rocket]) {
+    controllerList = rockets.compactMap { rocket in
+      self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
+        let rocketController = RocketController(
+          coder: coder,
+          rocketData: rocket
+        )
+        rocketController?.onChangeReloadList = {
+          self.setControllersList(fromRockets: rockets)
+        }
+        return rocketController
+      }
+    }
+    setViewControllers([self.controllerList[0]], direction: .forward, animated: true)
+  }
+
   private func getControllers() {
     self.networkService.getRockets { result in
       DispatchQueue.main.async {
         switch result {
+        case .success(let rockets):
+          self.setControllersList(fromRockets: rockets)
         case .failure(let error):
           self.presentAlert(withMessage: error.localizedDescription)
-        case .success(let rockets):
-          self.controllerList = rockets.compactMap { rocket in
-            self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
-              RocketController(
-                coder: coder,
-                rocketData: rocket
-              )
-            }
-          }
-          self.setViewControllers([self.controllerList[0]], direction: .forward, animated: true)
         }
       }
     }
@@ -60,7 +68,6 @@ final class RocketPageViewController: UIPageViewController {
 
 // MARK: - UIPageViewControllerDataSource
 extension RocketPageViewController: UIPageViewControllerDataSource {
-
   func pageViewController(
     _ pageViewController: UIPageViewController,
     viewControllerBefore viewController: UIViewController

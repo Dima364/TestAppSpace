@@ -22,9 +22,14 @@ final class SettingsController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  required init?(coder: NSCoder) {
-    userDefaultsService = UserDefaultsService()
+  init?(coder: NSCoder, userDefaultsService: UserDefaultsService = UserDefaultsService()) {
+    self.userDefaultsService = userDefaultsService
     super.init(coder: coder)
+  }
+
+  @available (*, unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   override func viewDidLoad() {
