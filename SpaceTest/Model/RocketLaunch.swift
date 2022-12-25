@@ -10,7 +10,7 @@ struct RocketLaunch: Decodable {
   let docs: [Doc]
 
   // MARK: - Doc
-  // swiftlint: disable type_name
+  // swiftlint: disable:next: type_name
   struct Doc: Decodable, Hashable {
     let rocket: String
     let success: Bool

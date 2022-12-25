@@ -9,7 +9,7 @@ import UIKit
 final class ButtonCell: UICollectionViewCell {
 
   @IBOutlet private var button: UIButton!
-  var buttonClick: (() -> Void)?
+  var openLaunchesController: (() -> Void)?
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -19,6 +19,6 @@ final class ButtonCell: UICollectionViewCell {
 
   @IBAction
   private func buttonClick(_ sender: Any) {
-    buttonClick?()
+    openLaunchesController?()
   }
 }

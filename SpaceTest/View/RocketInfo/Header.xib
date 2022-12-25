@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8F-bw-NyA">
-                    <rect key="frame" x="5" y="5" width="305" height="40"/>
+                    <rect key="frame" x="0.0" y="5" width="310" height="40"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -24,7 +24,7 @@
                 <constraint firstItem="C8F-bw-NyA" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="4cP-ZA-pQr"/>
                 <constraint firstAttribute="trailing" secondItem="C8F-bw-NyA" secondAttribute="trailing" constant="10" id="cRf-tB-CRT"/>
                 <constraint firstAttribute="bottom" secondItem="C8F-bw-NyA" secondAttribute="bottom" constant="5" id="hBd-tC-gyS"/>
-                <constraint firstItem="C8F-bw-NyA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="yER-Xc-Lje"/>
+                <constraint firstItem="C8F-bw-NyA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="yER-Xc-Lje"/>
             </constraints>
             <connections>
                 <outlet property="titleLabel" destination="C8F-bw-NyA" id="PuH-bi-4CS"/>

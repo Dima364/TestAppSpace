@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint: disable:next: file_types_order
 enum NetworkError: Error {
   case badURL
   case failedToDecode

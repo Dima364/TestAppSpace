@@ -13,9 +13,9 @@ final class LaunchesTableController: UITableViewController {
   private let networkService: NetworkService
   private let rocketId: String
 
-  required init?(coder: NSCoder, rocketId: String, rocketName: String) {
+  required init?(coder: NSCoder, rocketId: String, rocketName: String, networkService: NetworkService = NetworkService()) {
     self.rocketId = rocketId
-    networkService = NetworkService()
+    self.networkService = networkService
     super.init(coder: coder)
     self.title = rocketName
   }
@@ -47,12 +47,12 @@ final class LaunchesTableController: UITableViewController {
     }
   }
 
-  // MARK: - TableDelegate configuration
+  // MARK: - UITableViewDelegate
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     100
   }
 
-  // MARK: - DataSource configuration
+  // MARK: - UITableViewDataSource
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = self.tableView.dequeueReusableCell(
       withIdentifier: "LaunchesTableCell",

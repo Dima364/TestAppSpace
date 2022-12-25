@@ -32,7 +32,7 @@
         <!--Rocket Page View Controller-->
         <scene sceneID="g3f-a0-BRa">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="XAn-m3-WTZ" customClass="RocketPageViewController" customModule="SpaceTest" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="page" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="XAn-m3-WTZ" customClass="RocketPageViewController" customModule="SpaceTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hQO-xe-FIh">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="KJB-2C-idB"/>
                     </navigationItem>
@@ -248,7 +248,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Mt-Qo-tbp">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Mt-Qo-tbp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7KK-Gy-Olo">

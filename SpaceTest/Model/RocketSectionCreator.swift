@@ -58,13 +58,13 @@ final class RocketSectionCreator {
     return Item.value(value: value, hint: hint)
   }
 
-  func makeSections(data: Rocket) -> Result<[Section], Error> {
+  func makeSections(data: Rocket) -> [Section] {
     var imageAndTitleItem = [Section.Item]()
     if let url = URL(string: data.flickrImages[0]) {
       imageAndTitleItem.append(.title(image: url, title: data.name))
     }
 
-    return .success([
+    return [
       Section(sectionType: .imageAndTitle, title: nil, items: imageAndTitleItem),
       Section(
         sectionType: .hScroll,
@@ -92,6 +92,6 @@ final class RocketSectionCreator {
         .value(value: "\(data.secondStage.burnTimeSec?.description ?? "Н/Д")", hint: Hints.burnTimeSec.rawValue)
       ]),
       Section(sectionType: .button, title: nil, items: [Section.Item.button])
-    ])
+    ]
   }
 }

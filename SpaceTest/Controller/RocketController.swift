@@ -8,14 +8,16 @@ import UIKit
 final class RocketController: UIViewController {
 
   private let rawModel: Rocket
-  private var sectionCreator: RocketSectionCreator
+  private let sectionCreator: RocketSectionCreator
   private lazy var dataSource = configureDataSource()
 
   @IBOutlet private var collectionView: UICollectionView!
 
-  init?(coder: NSCoder, rocketData: Rocket) {
-    sectionCreator = RocketSectionCreator()
-    rawModel = rocketData
+  var onChangeReloadList: (() -> Void)?
+
+  init?(coder: NSCoder, rocketData: Rocket, sectionCreator: RocketSectionCreator = RocketSectionCreator()) {
+    self.sectionCreator = sectionCreator
+    self.rawModel = rocketData
     super.init(coder: coder)
   }
 
@@ -26,12 +28,7 @@ final class RocketController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    makeSections(fromData: rawModel)
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    makeSections(fromData: rawModel)
+    applySnapshots(withSections: sectionCreator.makeSections(data: rawModel))
   }
 
   @IBSegueAction
@@ -45,20 +42,9 @@ final class RocketController: UIViewController {
       return SettingsController(coder: coder)
     }
     settingsController.settingsUpdate = {
-      self.makeSections(fromData: self.rawModel)
+      self.onChangeReloadList?()
     }
     return settingsController
-  }
-
-  private func makeSections(fromData: Rocket) {
-    switch sectionCreator.makeSections(data: rawModel) {
-    case .success(let sections):
-      applySnapshots(withSections: sections)
-    case .failure(let error):
-      DispatchQueue.main.async {
-        self.presentAlert(withMessage: error.localizedDescription)
-      }
-    }
   }
 
   private func applySnapshots(withSections sections: [Section]) {
@@ -72,7 +58,7 @@ final class RocketController: UIViewController {
   }
 }
 
-// MARK: - dataSource configuration
+// MARK: - UICollectionViewDiffableDataSource
 extension RocketController {
   private func configureDataSource() -> UICollectionViewDiffableDataSource<Section, Section.Item> {
     collectionView.collectionViewLayout = createLayout()
@@ -81,7 +67,7 @@ extension RocketController {
     let imageRegistration = UICollectionView.CellRegistration<ImageCell, Section.Item>(cellNib: imageNib) { cell, _, item in
       guard case let .title(image, title) = item else { return }
       cell.configure(image: image, title: title)
-      cell.buttonPressed = { [weak self] in
+      cell.openSettings = { [weak self] in
         self?.performSegue(withIdentifier: "settingsSegue", sender: self)
       }
     }
@@ -100,7 +86,7 @@ extension RocketController {
 
     let buttonNib = UINib(nibName: ButtonCell.reuseIdentifier, bundle: nil)
     let buttonRegistration = UICollectionView.CellRegistration<ButtonCell, Section.Item>(cellNib: buttonNib) { cell, _, _ in
-      cell.buttonClick = { [weak self] in
+      cell.openLaunchesController = { [weak self] in
         self?.performSegue(withIdentifier: "tableSegue", sender: self)
       }
     }
@@ -112,8 +98,7 @@ extension RocketController {
       supplementaryView.configure(withTitle: self.dataSource.snapshot().sectionIdentifiers[indexPath.section].title)
     }
 
-    dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item ->
-      UICollectionViewCell? in
+    dataSource = .init(collectionView: collectionView) { collectionView, indexPath, item in
       let sectionItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
 
       switch sectionItem.sectionType {
@@ -136,38 +121,39 @@ extension RocketController {
   }
 }
 
-// MARK: - layout configuration
+// MARK: - UICollectionViewCompositionalLayout
 extension RocketController {
   private func createLayout() -> UICollectionViewLayout {
-    UICollectionViewCompositionalLayout { (sectionIndex: Int, _: NSCollectionLayoutEnvironment) ->
-      NSCollectionLayoutSection? in
+    UICollectionViewCompositionalLayout { (sectionIndex: Int, _: NSCollectionLayoutEnvironment) in
       let sectionItem = self.dataSource.snapshot().sectionIdentifiers[sectionIndex]
       let sectionType = sectionItem.sectionType
+
       let section: NSCollectionLayoutSection
+      let groupSize: NSCollectionLayoutSize
+      let group: NSCollectionLayoutGroup
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
       let item = NSCollectionLayoutItem(layoutSize: itemSize)
+      let sectionContentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 15)
 
       switch sectionType {
       case .imageAndTitle:
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(450))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        section = NSCollectionLayoutSection(group: group)
+        groupSize = .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
+        group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        section = .init(group: group)
       case .hScroll:
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(125), heightDimension: .estimated(125))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
+        item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 10)
+        groupSize = .init(widthDimension: .estimated(120), heightDimension: .estimated(110))
+        group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        section = .init(group: group)
+        section.contentInsets = sectionContentInsets
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 15)
       case .vScroll:
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15)
+        groupSize = .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(45))
+        group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        section = .init(group: group)
+        section.contentInsets = sectionContentInsets
         if sectionItem.title != nil {
-          let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+          let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
           let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerFooterSize,
             elementKind: Header.reuseIdentifier,
@@ -176,11 +162,9 @@ extension RocketController {
           section.boundarySupplementaryItems = [sectionHeader]
         }
       case .button:
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15)
+        groupSize = .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(45))
+        group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        section = .init(group: group)
       }
       return section
     }
