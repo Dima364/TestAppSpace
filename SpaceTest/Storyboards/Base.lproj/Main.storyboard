@@ -81,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нагрузка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nii-jf-wDD">
-                                                    <rect key="frame" x="39" y="29" width="250" height="22"/>
+                                                    <rect key="frame" x="35" y="29" width="250" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="K3W-PF-NeO"/>
                                                     </constraints>
@@ -90,7 +90,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Q8b-vW-eiZ">
-                                                    <rect key="frame" x="253" y="24.5" width="141" height="32"/>
+                                                    <rect key="frame" x="293" y="24.5" width="101" height="32"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="piO-St-uYj"/>
@@ -108,10 +108,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" systemColor="tintColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="nii-jf-wDD" secondAttribute="trailing" constant="125" id="6A3-iF-bkS"/>
                                                 <constraint firstItem="nii-jf-wDD" firstAttribute="top" secondItem="gGv-lY-n2q" secondAttribute="topMargin" constant="18" id="7Mt-5z-eaG"/>
                                                 <constraint firstItem="Q8b-vW-eiZ" firstAttribute="centerY" secondItem="gGv-lY-n2q" secondAttribute="centerY" id="BXd-WY-pVx"/>
                                                 <constraint firstItem="nii-jf-wDD" firstAttribute="centerY" secondItem="gGv-lY-n2q" secondAttribute="centerY" id="CQe-dX-Vfb"/>
+                                                <constraint firstItem="Q8b-vW-eiZ" firstAttribute="leading" secondItem="nii-jf-wDD" secondAttribute="trailing" constant="8" symbolic="YES" id="LkB-Za-d1U"/>
                                                 <constraint firstItem="nii-jf-wDD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gGv-lY-n2q" secondAttribute="leadingMargin" constant="15" id="fEx-fH-xUc"/>
                                                 <constraint firstItem="Q8b-vW-eiZ" firstAttribute="trailing" secondItem="gGv-lY-n2q" secondAttribute="trailingMargin" id="mj0-gF-k0B"/>
                                                 <constraint firstItem="Q8b-vW-eiZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gGv-lY-n2q" secondAttribute="leading" constant="20" symbolic="YES" id="tnt-PO-ojM"/>
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deb-R5-swJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="-108"/>
+            <point key="canvasLocation" x="637.68115942028987" y="-108.48214285714285"/>
         </scene>
         <!--Launches Controlller-->
         <scene sceneID="OrY-J4-L3S">

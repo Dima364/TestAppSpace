@@ -36,20 +36,24 @@ final class RocketPageViewController: UIPageViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private func setControllersList(fromRockets rockets: [Rocket]) {
-    controllerList = rockets.compactMap { rocket in
-      self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
+  private func setControllersList(fromRockets rockets: [Rocket], withPosition position: Int = 0) {
+    controllerList = rockets.compactMap { [weak self] rocket in
+      self?.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
         let rocketController = RocketController(
           coder: coder,
           rocketData: rocket
         )
         rocketController?.onChangeReloadList = {
-          self.setControllersList(fromRockets: rockets)
+          var currentIndex: Int {
+            guard let currentController = self?.viewControllers?.first else { return 0 }
+            return self?.controllerList.firstIndex(of: currentController) ?? 0
+          }
+          self?.setControllersList(fromRockets: rockets, withPosition: currentIndex)
         }
         return rocketController
       }
     }
-    setViewControllers([self.controllerList[0]], direction: .forward, animated: true)
+    setViewControllers([controllerList[position]], direction: .forward, animated: true)
   }
 
   private func getControllers() {
@@ -96,6 +100,7 @@ extension RocketPageViewController: UIPageViewControllerDataSource {
 
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
     controllerList.count
+
   }
 
   func presentationIndex(for pageViewController: UIPageViewController) -> Int {

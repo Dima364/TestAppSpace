@@ -25,6 +25,10 @@ final class LaunchesTableController: UITableViewController {
     fatalError("init(coder:_ is not implemented")
   }
 
+  deinit {
+    print("launchesTableController deinit")
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     getLaunchesList()

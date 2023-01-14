@@ -7,11 +7,17 @@ import UIKit
 
 final class RocketController: UIViewController {
 
+  class Sdadtytty: UICollectionView {
+    deinit {
+      print("collectionview deinit")
+    }
+  }
+
   private let rawModel: Rocket
   private let sectionCreator: RocketSectionCreator
   private lazy var dataSource = configureDataSource()
 
-  @IBOutlet private var collectionView: UICollectionView!
+  @IBOutlet private var collectionView: Sdadtytty!
 
   var onChangeReloadList: (() -> Void)?
 
@@ -19,11 +25,16 @@ final class RocketController: UIViewController {
     self.sectionCreator = sectionCreator
     self.rawModel = rocketData
     super.init(coder: coder)
+    print("rocketController init \(self.rawModel.name)/ \(Unmanaged.passUnretained(self))")
   }
 
   @available (*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    print("rocketController deinit \(self.rawModel.name) / \(Unmanaged.passUnretained(self))")
   }
 
   override func viewDidLoad() {
@@ -41,8 +52,8 @@ final class RocketController: UIViewController {
     guard let settingsController = SettingsController(coder: coder) else {
       return SettingsController(coder: coder)
     }
-    settingsController.settingsUpdate = {
-      self.onChangeReloadList?()
+    settingsController.settingsUpdate = { [weak self] in
+      self?.onChangeReloadList?()
     }
     return settingsController
   }
@@ -64,10 +75,10 @@ extension RocketController {
     collectionView.collectionViewLayout = createLayout()
 
     let imageNib = UINib(nibName: ImageCell.reuseIdentifier, bundle: nil)
-    let imageRegistration = UICollectionView.CellRegistration<ImageCell, Section.Item>(cellNib: imageNib) { cell, _, item in
+    let imageRegistration = UICollectionView.CellRegistration<ImageCell, Section.Item>(cellNib: imageNib) { [weak self] cell, _, item in
       guard case let .title(image, title) = item else { return }
       cell.configure(image: image, title: title)
-      cell.openSettings = { [weak self] in
+      cell.openSettings = {
         self?.performSegue(withIdentifier: "settingsSegue", sender: self)
       }
     }
@@ -85,8 +96,8 @@ extension RocketController {
     }
 
     let buttonNib = UINib(nibName: ButtonCell.reuseIdentifier, bundle: nil)
-    let buttonRegistration = UICollectionView.CellRegistration<ButtonCell, Section.Item>(cellNib: buttonNib) { cell, _, _ in
-      cell.openLaunchesController = { [weak self] in
+    let buttonRegistration = UICollectionView.CellRegistration<ButtonCell, Section.Item>(cellNib: buttonNib) { [weak self] cell, _, _ in
+      cell.openLaunchesController = {
         self?.performSegue(withIdentifier: "tableSegue", sender: self)
       }
     }
@@ -94,11 +105,11 @@ extension RocketController {
     let headerRegistration = UICollectionView.SupplementaryRegistration<Header>(
       supplementaryNib: UINib(nibName: Header.reuseIdentifier, bundle: nil),
       elementKind: Header.reuseIdentifier
-    ) { supplementaryView, _, indexPath in
-      supplementaryView.configure(withTitle: self.dataSource.snapshot().sectionIdentifiers[indexPath.section].title)
+    ) { [weak self] supplementaryView, _, indexPath in
+      supplementaryView.configure(withTitle: self?.dataSource.snapshot().sectionIdentifiers[indexPath.section].title)
     }
 
-    dataSource = .init(collectionView: collectionView) { collectionView, indexPath, item in
+    dataSource = .init(collectionView: collectionView) { [unowned self] collectionView, indexPath, item in
       let sectionItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
 
       switch sectionItem.sectionType {
@@ -113,8 +124,8 @@ extension RocketController {
       }
     }
 
-    dataSource.supplementaryViewProvider = { [weak self] _, _, index in
-      self?.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: index)
+    dataSource.supplementaryViewProvider = { [unowned self] _, _, index in
+      self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: index)
     }
 
     return dataSource
@@ -124,7 +135,7 @@ extension RocketController {
 // MARK: - UICollectionViewCompositionalLayout
 extension RocketController {
   private func createLayout() -> UICollectionViewLayout {
-    UICollectionViewCompositionalLayout { (sectionIndex: Int, _: NSCollectionLayoutEnvironment) in
+    UICollectionViewCompositionalLayout { [unowned self] (sectionIndex: Int, _: NSCollectionLayoutEnvironment) in
       let sectionItem = self.dataSource.snapshot().sectionIdentifiers[sectionIndex]
       let sectionType = sectionItem.sectionType
 

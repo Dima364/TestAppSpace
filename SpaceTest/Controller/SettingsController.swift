@@ -32,6 +32,10 @@ final class SettingsController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  deinit {
+    print("settingsController deinit")
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
@@ -67,10 +71,10 @@ extension SettingsController: UITableViewDataSource {
 
     cell.configure(hint: dimension.rawValue, selectedIndex: selectedIndex, metrics: metrics)
 
-    cell.onChangeSetting = { index in
+    cell.onChangeSetting = { [weak self] index in
       guard let metricType = MetricSymbols(rawValue: metrics[index]) else { return }
-      self.userDefaultsService.setMetricType(metricType: metricType, forDimension: dimension)
-      self.settingsUpdate?()
+      self?.userDefaultsService.setMetricType(metricType: metricType, forDimension: dimension)
+      self?.settingsUpdate?()
     }
     return cell
   }
