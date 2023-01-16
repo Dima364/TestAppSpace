@@ -37,8 +37,8 @@ final class RocketPageViewController: UIPageViewController {
   }
 
   private func setControllersList(fromRockets rockets: [Rocket], withPosition position: Int = 0) {
-    controllerList = rockets.compactMap { [weak self] rocket in
-      self?.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
+    controllerList = rockets.compactMap { rocket in
+      self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
         let rocketController = RocketController(
           coder: coder,
           rocketData: rocket
@@ -48,7 +48,7 @@ final class RocketPageViewController: UIPageViewController {
             guard let currentController = self?.viewControllers?.first else { return 0 }
             return self?.controllerList.firstIndex(of: currentController) ?? 0
           }
-          self?.setControllersList(fromRockets: rockets, withPosition: currentIndex)
+          self.setControllersList(fromRockets: rockets, withPosition: currentIndex)
         }
         return rocketController
       }

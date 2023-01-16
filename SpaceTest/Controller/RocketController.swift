@@ -7,17 +7,11 @@ import UIKit
 
 final class RocketController: UIViewController {
 
-  class Sdadtytty: UICollectionView {
-    deinit {
-      print("collectionview deinit")
-    }
-  }
-
   private let rawModel: Rocket
   private let sectionCreator: RocketSectionCreator
   private lazy var dataSource = configureDataSource()
 
-  @IBOutlet private var collectionView: Sdadtytty!
+  @IBOutlet private var collectionView: UICollectionView!
 
   var onChangeReloadList: (() -> Void)?
 
@@ -44,7 +38,10 @@ final class RocketController: UIViewController {
 
   @IBSegueAction
   func segueLaunches(_ coder: NSCoder) -> LaunchesTableController? {
-    LaunchesTableController(coder: coder, rocketId: rawModel.id, rocketName: rawModel.name)
+    guard let view = LaunchesTableController(coder: coder) else { return nil }
+    let presenter = LaunchesPresenter(view: view, networkService: NetworkService(), rocketId: rawModel.id, rocketName: rawModel.name)
+    view.presenter = presenter
+    return view
   }
 
   @IBSegueAction

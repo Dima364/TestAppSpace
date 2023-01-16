@@ -10,6 +10,7 @@
 		3903E4F1290286FA009B1A42 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3903E4F0290286FA009B1A42 /* Kingfisher */; };
 		3903E4F329028A9F009B1A42 /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3903E4F229028A9F009B1A42 /* InfoCell.xib */; };
 		3903E4F529028CB7009B1A42 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3903E4F429028CB7009B1A42 /* InfoCell.swift */; };
+		394118952972B8F900FE839D /* LaunchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394118942972B8F900FE839D /* LaunchesPresenter.swift */; };
 		3963A247287A0ACC0012EFD5 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3963A246287A0ACC0012EFD5 /* ImageCell.swift */; };
 		397382CE28880E4D001A0122 /* RocketLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397382CD28880E4C001A0122 /* RocketLaunch.swift */; };
 		397382D128882268001A0122 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397382CF28882268001A0122 /* ButtonCell.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		3903E4F229028A9F009B1A42 /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
 		3903E4F429028CB7009B1A42 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		394118942972B8F900FE839D /* LaunchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesPresenter.swift; sourceTree = "<group>"; };
 		3963A246287A0ACC0012EFD5 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		397382CD28880E4C001A0122 /* RocketLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLaunch.swift; sourceTree = "<group>"; };
 		397382CF28882268001A0122 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				399D0BBE28682781008430F0 /* RocketController.swift */,
 				39DB61C829220FBD0015BBC8 /* LaunchesTableController.swift */,
+				394118942972B8F900FE839D /* LaunchesPresenter.swift */,
 				3996200A286D27A300D38313 /* RocketPageVIewController.swift */,
 				39B8AF35287F2AC600649592 /* SettingsController.swift */,
 			);
@@ -359,6 +362,7 @@
 				399D0BBD28682781008430F0 /* SceneDelegate.swift in Sources */,
 				39F1FCEE2928A56700A7CA1B /* UserDefaultsService.swift in Sources */,
 				39AF9BA62951A7B700A64C9E /* ViewControllerExtension.swift in Sources */,
+				394118952972B8F900FE839D /* LaunchesPresenter.swift in Sources */,
 				397382DB2897F199001A0122 /* Rocket.swift in Sources */,
 				39B8AF392881811300649592 /* SettingsCell.swift in Sources */,
 				39AF9BAA2951EB0000A64C9E /* NetworkService.swift in Sources */,

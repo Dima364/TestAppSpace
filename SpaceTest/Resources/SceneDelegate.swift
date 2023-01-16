@@ -23,9 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       RocketPageViewController(coder: coder)
     }
 
-    let naviga = UINavigationController(rootViewController: pageViewController)
+    let initialNavigationController = UINavigationController(rootViewController: pageViewController)
 
-    window.rootViewController = naviga
+    window.rootViewController = initialNavigationController
     self.window = window
     window.makeKeyAndVisible()
   }
