@@ -10,6 +10,7 @@ import UIKit
 final class LaunchesTableController: UITableViewController {
 
   var presenter: LaunchesPresenterProtocol!
+  private var launches: [RocketLaunch.Doc] = []
 
   deinit {
     print("launchesTableController deinit")
@@ -17,7 +18,8 @@ final class LaunchesTableController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = presenter.rocketName
+    title = presenter.rocketName
+    presenter.getLaunches()
   }
 
   // MARK: - UITableViewDelegate
@@ -34,7 +36,7 @@ final class LaunchesTableController: UITableViewController {
       return UITableViewCell()
     }
 
-    let launch = presenter.launches[indexPath.row]
+    let launch = launches[indexPath.row]
 
     cell.configure(
       name: launch.name,
@@ -46,12 +48,13 @@ final class LaunchesTableController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    presenter.launches.count
+    launches.count
   }
 }
 
 extension LaunchesTableController: LaunchesTableControllerProtocol {
-  func success() {
+  func success(withLaunches launches: [RocketLaunch.Doc]) {
+    self.launches = launches
     tableView.reloadData()
   }
 

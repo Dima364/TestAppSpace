@@ -45,8 +45,8 @@ final class RocketPageViewController: UIPageViewController {
         )
         rocketController?.onChangeReloadList = {
           var currentIndex: Int {
-            guard let currentController = self?.viewControllers?.first else { return 0 }
-            return self?.controllerList.firstIndex(of: currentController) ?? 0
+            guard let currentController = self.viewControllers?.first else { return 0 }
+            return self.controllerList.firstIndex(of: currentController) ?? 0
           }
           self.setControllersList(fromRockets: rockets, withPosition: currentIndex)
         }
