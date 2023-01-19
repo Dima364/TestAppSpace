@@ -10,7 +10,7 @@ import UIKit
 final class LaunchesTableController: UITableViewController {
 
   var presenter: LaunchesPresenterProtocol!
-  private var launches: [RocketLaunch.Doc] = []
+  private var items: [LaunchItem] = []
 
   deinit {
     print("launchesTableController deinit")
@@ -36,29 +36,29 @@ final class LaunchesTableController: UITableViewController {
       return UITableViewCell()
     }
 
-    let launch = launches[indexPath.row]
+    let launch = items[indexPath.row]
 
     cell.configure(
-      name: launch.name,
-      date: Date.dateFormatterRu.string(from: launch.dateLocal),
-      imageName: launch.success ? "up" : "down"
+      name: launch.title,
+      date: launch.date,
+      imageName: launch.image
     )
 
     return cell
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    launches.count
+    items.count
   }
 }
 
 extension LaunchesTableController: LaunchesTableControllerProtocol {
-  func success(withLaunches launches: [RocketLaunch.Doc]) {
-    self.launches = launches
+  func success(with launches: [LaunchItem]) {
+    self.items = launches
     tableView.reloadData()
   }
 
-  func failure(withError error: Error) {
+  func failure(with error: Error) {
     presentAlert(withMessage: error.localizedDescription)
   }
 }

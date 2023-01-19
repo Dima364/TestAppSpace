@@ -8,8 +8,8 @@
 import Foundation
 
 protocol LaunchesTableControllerProtocol: AnyObject {
-  func success(withLaunches launches: [RocketLaunch.Doc])
-  func failure(withError error: Error)
+  func success(with launches: [LaunchItem])
+  func failure(with error: Error)
 }
 
 protocol LaunchesPresenterProtocol: AnyObject {
@@ -30,15 +30,19 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
     self.networkService = networkService
   }
 
+  private func getItems(from launches: [RocketLaunch.Doc]) -> [LaunchItem] {
+    launches.map { LaunchItem(title: $0.name, date: Date.dateFormatterRu.string(from: $0.dateLocal), image: $0.success ? "up" : "down") }
+  }
+
   func getLaunches() {
     networkService.getLaunches(forRocket: rocketId) { [weak self] result in
       guard let self = self else { return }
       DispatchQueue.main.async {
         switch result {
         case .success(let launches):
-          self.view?.success(withLaunches: launches.docs)
+          self.view?.success(with: self.getItems(from: launches.docs))
         case .failure(let error):
-          self.view?.failure(withError: error)
+          self.view?.failure(with: error)
         }
       }
     }

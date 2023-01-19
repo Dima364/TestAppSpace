@@ -46,13 +46,14 @@ final class RocketController: UIViewController {
 
   @IBSegueAction
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
-    guard let settingsController = SettingsController(coder: coder) else {
-      return SettingsController(coder: coder)
-    }
-    settingsController.settingsUpdate = { [weak self] in
+    guard let view = SettingsController(coder: coder) else { return nil }
+    view.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
+
+    view.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }
-    return settingsController
+
+    return view
   }
 
   private func applySnapshots(withSections sections: [Section]) {

@@ -10,8 +10,8 @@ final class SettingsController: UIViewController {
   private typealias Hints = RocketSectionCreator.Hints
   private typealias MetricSymbols = RocketSectionCreator.MetricSymbols
 
-  private let userDefaultsService: UserDefaultsService
-  private let settingsItemsType = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
+  private var items: [SettingsItem] = []
+  var presenter: SettingsPresenterProtocol!
 
   var settingsUpdate: (() -> Void)?
 
@@ -22,14 +22,8 @@ final class SettingsController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  init?(coder: NSCoder, userDefaultsService: UserDefaultsService = UserDefaultsService()) {
-    self.userDefaultsService = userDefaultsService
-    super.init(coder: coder)
-  }
-
-  @available (*, unavailable)
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(coder: coder)
   }
 
   deinit {
@@ -39,43 +33,37 @@ final class SettingsController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
+    self.presenter.getSettingsItems()
   }
 }
 
 // MARK: - UITableViewDataSource
 extension SettingsController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    settingsItemsType.count
+    items.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let metrics: [String]
-    let dimension = settingsItemsType[indexPath.row]
+    let item = items[indexPath.row]
 
-    switch dimension {
-    case .height, .diameter:
-      metrics = [MetricSymbols.meters.rawValue, MetricSymbols.feet.rawValue]
-    case .mass, .payloadWeight:
-      metrics = [MetricSymbols.kilos.rawValue, MetricSymbols.pounds.rawValue]
-    default:
-      metrics = []
-    }
-
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsCell,
-      let userDefaultsSymbol = userDefaultsService.getMetricType(forDimension: settingsItemsType[indexPath.row]),
-      let symbol = MetricSymbols(rawValue: userDefaultsSymbol.rawValue),
-      let selectedIndex = metrics.firstIndex(of: symbol.rawValue)
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsCell
     else {
       return UITableViewCell()
     }
 
-    cell.configure(hint: dimension.rawValue, selectedIndex: selectedIndex, metrics: metrics)
+    cell.configure(hint: item.title, selectedIndex: item.index, metrics: item.metrics)
 
     cell.onChangeSetting = { [weak self] index in
-      guard let metricType = MetricSymbols(rawValue: metrics[index]) else { return }
-      self?.userDefaultsService.setMetricType(metricType: metricType, forDimension: dimension)
+      self?.presenter.saveChanges(itemIndex: indexPath.row, symbolIndex: index)
       self?.settingsUpdate?()
     }
     return cell
+  }
+}
+
+extension SettingsController: SettingsControllerProtocol {
+  func setSettingsItems(with items: [SettingsItem]) {
+    self.items = items
+    tableView.reloadData()
   }
 }
