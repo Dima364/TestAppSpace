@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class NetworkService {
+protocol NetworkServiceProtocol {
+  func getLaunches(forRocket rocket: String, completion: @escaping (Result<RocketLaunch, Error>) -> Void)
+}
+
+final class NetworkService: NetworkServiceProtocol {
 
   private enum ApiUrls {
     static let launches = "https://api.spacexdata.com/v4/launches/query"

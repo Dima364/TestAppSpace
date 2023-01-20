@@ -37,7 +37,7 @@ final class RocketSectionCreator {
   private let userDefaultsService = UserDefaultsService()
 
   private func getHorizontalItem(forDimension dimension: Hints, data: Rocket) -> Item {
-    guard let metricSymbol = userDefaultsService.getMetricType(forDimension: dimension) else {
+    guard let metricSymbol = userDefaultsService.getMetricType(for: dimension) else {
       return Item.button
     }
 

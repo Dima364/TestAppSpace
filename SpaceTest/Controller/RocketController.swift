@@ -7,17 +7,11 @@ import UIKit
 
 final class RocketController: UIViewController {
 
-  class Sdadtytty: UICollectionView {
-    deinit {
-      print("collectionview deinit")
-    }
-  }
-
   private let rawModel: Rocket
   private let sectionCreator: RocketSectionCreator
   private lazy var dataSource = configureDataSource()
 
-  @IBOutlet private var collectionView: Sdadtytty!
+  @IBOutlet private var collectionView: UICollectionView!
 
   var onChangeReloadList: (() -> Void)?
 
@@ -44,18 +38,22 @@ final class RocketController: UIViewController {
 
   @IBSegueAction
   func segueLaunches(_ coder: NSCoder) -> LaunchesTableController? {
-    LaunchesTableController(coder: coder, rocketId: rawModel.id, rocketName: rawModel.name)
+    guard let view = LaunchesTableController(coder: coder) else { return nil }
+    let presenter = LaunchesPresenter(view: view, networkService: NetworkService(), rocketId: rawModel.id, rocketName: rawModel.name)
+    view.presenter = presenter
+    return view
   }
 
   @IBSegueAction
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
-    guard let settingsController = SettingsController(coder: coder) else {
-      return SettingsController(coder: coder)
-    }
-    settingsController.settingsUpdate = { [weak self] in
+    guard let view = SettingsController(coder: coder) else { return nil }
+    view.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
+
+    view.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }
-    return settingsController
+
+    return view
   }
 
   private func applySnapshots(withSections sections: [Section]) {

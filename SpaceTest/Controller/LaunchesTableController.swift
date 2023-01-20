@@ -9,21 +9,8 @@ import UIKit
 
 final class LaunchesTableController: UITableViewController {
 
-  private var data: [RocketLaunch.Doc] = []
-  private let networkService: NetworkService
-  private let rocketId: String
-
-  required init?(coder: NSCoder, rocketId: String, rocketName: String, networkService: NetworkService = NetworkService()) {
-    self.rocketId = rocketId
-    self.networkService = networkService
-    super.init(coder: coder)
-    self.title = rocketName
-  }
-
-  @available (*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:_ is not implemented")
-  }
+  var presenter: LaunchesPresenterProtocol!
+  private var items: [LaunchItem] = []
 
   deinit {
     print("launchesTableController deinit")
@@ -31,24 +18,8 @@ final class LaunchesTableController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    getLaunchesList()
-  }
-
-  private func getLaunchesList() {
-    networkService.getLaunches(forRocket: rocketId) { result in
-      DispatchQueue.main.async {
-        switch result {
-        case .success(let launches):
-          if launches.docs.isEmpty {
-            self.presentAlert(withMessage: "Запусков не найдено")
-          }
-          self.data = launches.docs
-          self.tableView.reloadData()
-        case .failure(let error):
-          self.presentAlert(withMessage: error.localizedDescription)
-        }
-      }
-    }
+    title = presenter.rocketName
+    presenter.getLaunches()
   }
 
   // MARK: - UITableViewDelegate
@@ -64,17 +35,30 @@ final class LaunchesTableController: UITableViewController {
     ) as? LaunchesTableCell else {
       return UITableViewCell()
     }
-    let imageName = data[indexPath.row].success ? "up" : "down"
+
+    let launch = items[indexPath.row]
 
     cell.configure(
-      name: data[indexPath.row].name,
-      date: Date.dateFormatterRu.string(from: data[indexPath.row].dateLocal),
-      imageName: imageName
+      name: launch.title,
+      date: launch.date,
+      imageName: launch.image
     )
+
     return cell
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    data.count
+    items.count
+  }
+}
+
+extension LaunchesTableController: LaunchesTableControllerProtocol {
+  func success(with launches: [LaunchItem]) {
+    self.items = launches
+    tableView.reloadData()
+  }
+
+  func failure(with error: Error) {
+    presentAlert(withMessage: error.localizedDescription)
   }
 }

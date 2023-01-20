@@ -7,10 +7,16 @@
 
 import Foundation
 
-final class UserDefaultsService {
+protocol UserDefaultsServiceProtocol: AnyObject {
   typealias Hints = RocketSectionCreator.Hints
   typealias MetricSymbols = RocketSectionCreator.MetricSymbols
 
+  func makeSettingsDefaults()
+  func getMetricType(for dimension: Hints) -> MetricSymbols?
+  func setMetricType(for dimension: Hints, with: MetricSymbols)
+}
+
+final class UserDefaultsService: UserDefaultsServiceProtocol {
   private let userDefaults = UserDefaults.standard
 
   func makeSettingsDefaults() {
@@ -24,7 +30,7 @@ final class UserDefaultsService {
     )
   }
 
-  func getMetricType(forDimension dimension: Hints) -> MetricSymbols? {
+  func getMetricType(for dimension: Hints) -> MetricSymbols? {
     guard let userDefaultsValue = userDefaults.string(forKey: dimension.rawValue),
     let metricSymbol = MetricSymbols(rawValue: userDefaultsValue) else {
       return nil
@@ -32,7 +38,7 @@ final class UserDefaultsService {
     return metricSymbol
   }
 
-  func setMetricType(metricType: MetricSymbols, forDimension dimension: Hints) {
-    userDefaults.set(metricType.rawValue, forKey: dimension.rawValue)
+  func setMetricType(for dimension: Hints, with: MetricSymbols) {
+    userDefaults.set(with.rawValue, forKey: dimension.rawValue)
   }
 }
