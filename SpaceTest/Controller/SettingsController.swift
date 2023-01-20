@@ -54,7 +54,7 @@ extension SettingsController: UITableViewDataSource {
     cell.configure(hint: item.title, selectedIndex: item.index, metrics: item.metrics)
 
     cell.onChangeSetting = { [weak self] index in
-      self?.presenter.saveChanges(itemIndex: indexPath.row, symbolIndex: index)
+      self?.presenter.saveChanges(dimension: item.title, metric: item.metrics[index])
       self?.settingsUpdate?()
     }
     return cell

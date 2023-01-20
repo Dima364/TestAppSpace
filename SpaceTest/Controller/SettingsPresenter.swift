@@ -17,7 +17,7 @@ protocol SettingsPresenterProtocol: AnyObject {
   typealias MetricSymbols = RocketSectionCreator.MetricSymbols
 
   func getSettingsItems()
-  func saveChanges(itemIndex: Int, symbolIndex: Int)
+  func saveChanges(dimension: String, metric: String)
 }
 
 final class SettingsPresenter: SettingsPresenterProtocol {
@@ -58,9 +58,11 @@ final class SettingsPresenter: SettingsPresenterProtocol {
     view?.setSettingsItems(with: settingsItems)
   }
 
-  func saveChanges(itemIndex: Int, symbolIndex: Int) {
-    let hint = dimensionTypes[itemIndex]
-    guard let metricType = MetricSymbols(rawValue: getMetrics(for: hint)[symbolIndex]) else { return }
-    self.userDefaultsService.setMetricType(for: hint, with: metricType)
+  func saveChanges(dimension: String, metric: String) {
+    guard let hint = Hints(rawValue: dimension),
+      let metric = MetricSymbols(rawValue: metric)
+    else { return }
+
+    self.userDefaultsService.setMetricType(for: hint, with: metric)
   }
 }

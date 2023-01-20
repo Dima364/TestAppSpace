@@ -31,7 +31,13 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
   }
 
   private func getItems(from launches: [RocketLaunch.Doc]) -> [LaunchItem] {
-    launches.map { LaunchItem(title: $0.name, date: Date.dateFormatterRu.string(from: $0.dateLocal), image: $0.success ? "up" : "down") }
+    launches.map {
+      LaunchItem(
+        title: $0.name,
+        date: Date.dateFormatterRu.string(from: $0.dateLocal),
+        image: $0.success ? "up" : "down"
+      )
+    }
   }
 
   func getLaunches() {
