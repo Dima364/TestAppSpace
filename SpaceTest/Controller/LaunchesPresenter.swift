@@ -13,14 +13,14 @@ protocol LaunchesTableControllerProtocol: AnyObject {
 }
 
 protocol LaunchesPresenterProtocol: AnyObject {
-  func getLaunches()
   var rocketName: String { get }
+  func getLaunches()
 }
 
 final class LaunchesPresenter: LaunchesPresenterProtocol {
-  weak var view: LaunchesTableControllerProtocol?
   private let rocketId: String
   private let networkService: NetworkServiceProtocol
+  weak var view: LaunchesTableControllerProtocol?
   let rocketName: String
 
   init(view: LaunchesTableControllerProtocol, networkService: NetworkServiceProtocol, rocketId: String, rocketName: String) {

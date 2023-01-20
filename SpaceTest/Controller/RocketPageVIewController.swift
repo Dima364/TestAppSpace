@@ -8,42 +8,32 @@
 import UIKit
 
 final class RocketPageViewController: UIPageViewController {
-
-  private let networkService: NetworkService
-  private let userDefaultsService: UserDefaultsService
   private var controllerList = [UIViewController]()
+  var presenter: RocketPageViewPresenterProtocol!
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.dataSource = self
-
-    userDefaultsService.makeSettingsDefaults()
-    getControllers()
-  }
-
-  init?(
-    coder: NSCoder,
-    userDefaultsService: UserDefaultsService = UserDefaultsService(),
-    networkService: NetworkService = NetworkService()
-  ) {
-    self.userDefaultsService = userDefaultsService
-    self.networkService = NetworkService()
-    super.init(coder: coder)
-  }
-
-  @available (*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    presenter.setDefaultSettings()
+    presenter.setControllers()
   }
 
   private func setControllersList(fromRockets rockets: [Rocket], withPosition position: Int = 0) {
     controllerList = rockets.compactMap { rocket in
       self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
-        let rocketController = RocketController(
-          coder: coder,
-          rocketData: rocket
-        )
-        rocketController?.onChangeReloadList = {
+        guard let rocketController = RocketController(coder: coder) else { return UIViewController() }
+
+        rocketController.presenter = RocketPresenter(
+          rocketRawData: rocket,
+          view: rocketController,
+          rocketSectionCreator: RocketSectionCreator(userDefaultsService: self.presenter.userDefaultsService)
+          )
+
+        rocketController.onChangeReloadList = {
           var currentIndex: Int {
             guard let currentController = self.viewControllers?.first else { return 0 }
             return self.controllerList.firstIndex(of: currentController) ?? 0
@@ -54,19 +44,6 @@ final class RocketPageViewController: UIPageViewController {
       }
     }
     setViewControllers([controllerList[position]], direction: .forward, animated: true)
-  }
-
-  private func getControllers() {
-    self.networkService.getRockets { result in
-      DispatchQueue.main.async {
-        switch result {
-        case .success(let rockets):
-          self.setControllersList(fromRockets: rockets)
-        case .failure(let error):
-          self.presentAlert(withMessage: error.localizedDescription)
-        }
-      }
-    }
   }
 }
 
@@ -105,5 +82,16 @@ extension RocketPageViewController: UIPageViewControllerDataSource {
 
   func presentationIndex(for pageViewController: UIPageViewController) -> Int {
     0
+  }
+}
+
+// MARK: - Presenter
+extension RocketPageViewController: RocketPageViewControllerProtocol {
+  func success(with result: [Rocket]) {
+    self.setControllersList(fromRockets: result)
+  }
+
+  func failure(with error: Error) {
+    self.presentAlert(withMessage: error.localizedDescription)
   }
 }

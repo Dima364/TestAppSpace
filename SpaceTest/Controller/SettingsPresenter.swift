@@ -8,22 +8,18 @@
 import Foundation
 
 protocol SettingsControllerProtocol: AnyObject {
-  typealias Hints = RocketSectionCreator.Hints
-  func setSettingsItems(with items: [SettingsItem])
+  func present(with items: [SettingsItem])
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-  typealias Hints = RocketSectionCreator.Hints
-  typealias MetricSymbols = RocketSectionCreator.MetricSymbols
-
   func getSettingsItems()
   func saveChanges(dimension: String, metric: String)
 }
 
 final class SettingsPresenter: SettingsPresenterProtocol {
-  weak var view: SettingsControllerProtocol?
   private let userDefaultsService: UserDefaultsServiceProtocol
   private let dimensionTypes = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
+  weak var view: SettingsControllerProtocol?
 
   init(view: SettingsControllerProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
     self.userDefaultsService = userDefaultsService
@@ -44,7 +40,6 @@ final class SettingsPresenter: SettingsPresenterProtocol {
   }
 
   func getSettingsItems() {
-
     let settingsItems = dimensionTypes.map { dimension in
       let metrics: [String] = getMetrics(for: dimension)
 
@@ -55,7 +50,7 @@ final class SettingsPresenter: SettingsPresenterProtocol {
 
       return SettingsItem(title: dimension.rawValue, index: selectedIndex, metrics: getMetrics(for: dimension))
     }
-    view?.setSettingsItems(with: settingsItems)
+    view?.present(with: settingsItems)
   }
 
   func saveChanges(dimension: String, metric: String) {

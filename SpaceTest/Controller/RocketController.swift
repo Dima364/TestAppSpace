@@ -6,40 +6,29 @@
 import UIKit
 
 final class RocketController: UIViewController {
-
-  private let rawModel: Rocket
-  private let sectionCreator: RocketSectionCreator
-  private lazy var dataSource = configureDataSource()
-
   @IBOutlet private var collectionView: UICollectionView!
-
+  private lazy var dataSource = configureDataSource()
   var onChangeReloadList: (() -> Void)?
+  var presenter: RocketPresenter!
 
-  init?(coder: NSCoder, rocketData: Rocket, sectionCreator: RocketSectionCreator = RocketSectionCreator()) {
-    self.sectionCreator = sectionCreator
-    self.rawModel = rocketData
-    super.init(coder: coder)
-    print("rocketController init \(self.rawModel.name)/ \(Unmanaged.passUnretained(self))")
-  }
-
-  @available (*, unavailable)
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  deinit {
-    print("rocketController deinit \(self.rawModel.name) / \(Unmanaged.passUnretained(self))")
+    super.init(coder: coder)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    applySnapshots(withSections: sectionCreator.makeSections(data: rawModel))
+    self.presenter.getSections()
   }
 
   @IBSegueAction
   func segueLaunches(_ coder: NSCoder) -> LaunchesTableController? {
     guard let view = LaunchesTableController(coder: coder) else { return nil }
-    let presenter = LaunchesPresenter(view: view, networkService: NetworkService(), rocketId: rawModel.id, rocketName: rawModel.name)
+    let presenter = LaunchesPresenter(
+      view: view,
+      networkService: NetworkService(),
+      rocketId: presenter.rocketId,
+      rocketName: presenter.rocketName
+    )
     view.presenter = presenter
     return view
   }
@@ -52,7 +41,6 @@ final class RocketController: UIViewController {
     view.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }
-
     return view
   }
 
@@ -177,5 +165,12 @@ extension RocketController {
       }
       return section
     }
+  }
+}
+
+// MARK: - Presenter
+extension RocketController: RocketControllerProtocol {
+  func present(from sections: [Section]) {
+    applySnapshots(withSections: sections)
   }
 }

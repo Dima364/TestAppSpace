@@ -8,9 +8,6 @@
 import Foundation
 
 protocol UserDefaultsServiceProtocol: AnyObject {
-  typealias Hints = RocketSectionCreator.Hints
-  typealias MetricSymbols = RocketSectionCreator.MetricSymbols
-
   func makeSettingsDefaults()
   func getMetricType(for dimension: Hints) -> MetricSymbols?
   func setMetricType(for dimension: Hints, with: MetricSymbols)
