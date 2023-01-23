@@ -18,7 +18,6 @@ final class RocketPageViewController: UIPageViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.dataSource = self
-    presenter.setDefaultSettings()
     presenter.setControllers()
   }
 
@@ -30,7 +29,7 @@ final class RocketPageViewController: UIPageViewController {
         rocketController.presenter = RocketPresenter(
           rocketRawData: rocket,
           view: rocketController,
-          rocketSectionCreator: RocketSectionCreator(userDefaultsService: self.presenter.userDefaultsService)
+          rocketSectionCreator: RocketSectionCreator(userDefaultsService: UserDefaultsService())
           )
 
         rocketController.onChangeReloadList = {
@@ -85,7 +84,7 @@ extension RocketPageViewController: UIPageViewControllerDataSource {
   }
 }
 
-// MARK: - Presenter
+// MARK: - RocketPageViewControllerProtocol
 extension RocketPageViewController: RocketPageViewControllerProtocol {
   func success(with result: [Rocket]) {
     self.setControllersList(fromRockets: result)

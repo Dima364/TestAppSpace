@@ -53,7 +53,7 @@ extension SettingsController: UITableViewDataSource {
   }
 }
 
-// MARK: - Presenter
+// MARK: - SettingsControllerProtocol
 extension SettingsController: SettingsControllerProtocol {
   func present(with items: [SettingsItem]) {
     self.items = items

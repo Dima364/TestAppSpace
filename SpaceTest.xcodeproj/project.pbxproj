@@ -26,7 +26,7 @@
 		39962005286D03DE00D38313 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39962004286D03DE00D38313 /* ImageCell.xib */; };
 		39962008286D105000D38313 /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39962006286D105000D38313 /* HorizontalCell.swift */; };
 		39962009286D105000D38313 /* HorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39962007286D105000D38313 /* HorizontalCell.xib */; };
-		3996200B286D27A300D38313 /* RocketPageVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3996200A286D27A300D38313 /* RocketPageVIewController.swift */; };
+		3996200B286D27A300D38313 /* RocketPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3996200A286D27A300D38313 /* RocketPageViewController.swift */; };
 		399D0BBB28682781008430F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D0BBA28682781008430F0 /* AppDelegate.swift */; };
 		399D0BBD28682781008430F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D0BBC28682781008430F0 /* SceneDelegate.swift */; };
 		399D0BBF28682781008430F0 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D0BBE28682781008430F0 /* RocketController.swift */; };
@@ -69,7 +69,7 @@
 		39962004286D03DE00D38313 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		39962006286D105000D38313 /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
 		39962007286D105000D38313 /* HorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCell.xib; sourceTree = "<group>"; };
-		3996200A286D27A300D38313 /* RocketPageVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPageVIewController.swift; sourceTree = "<group>"; };
+		3996200A286D27A300D38313 /* RocketPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPageViewController.swift; sourceTree = "<group>"; };
 		399D0BB728682781008430F0 /* SpaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399D0BBA28682781008430F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399D0BBC28682781008430F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		399D0BD0286827A7008430F0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3996200A286D27A300D38313 /* RocketPageVIewController.swift */,
+				3996200A286D27A300D38313 /* RocketPageViewController.swift */,
 				394118AC297AF89E00FE839D /* RocketPageViewPresenter.swift */,
 				399D0BBE28682781008430F0 /* RocketController.swift */,
 				394118A6297AF5D300FE839D /* RocketPresenter.swift */,
@@ -366,7 +366,7 @@
 				39AF9BA82951BA2F00A64C9E /* Section.swift in Sources */,
 				39F1FCEC2928A2C100A7CA1B /* RocketSectionCreator.swift in Sources */,
 				39B8AF36287F2AC600649592 /* SettingsController.swift in Sources */,
-				3996200B286D27A300D38313 /* RocketPageVIewController.swift in Sources */,
+				3996200B286D27A300D38313 /* RocketPageViewController.swift in Sources */,
 				394118A9297AF61E00FE839D /* Hints.swift in Sources */,
 				3903E4F529028CB7009B1A42 /* InfoCell.swift in Sources */,
 				399D0BBF28682781008430F0 /* RocketController.swift in Sources */,

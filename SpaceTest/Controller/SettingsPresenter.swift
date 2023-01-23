@@ -21,7 +21,7 @@ final class SettingsPresenter: SettingsPresenterProtocol {
   private let dimensionTypes = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
   weak var view: SettingsControllerProtocol?
 
-  init(view: SettingsControllerProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+  init(view: SettingsControllerProtocol?, userDefaultsService: UserDefaultsServiceProtocol) {
     self.userDefaultsService = userDefaultsService
     self.view = view
   }
@@ -40,13 +40,13 @@ final class SettingsPresenter: SettingsPresenterProtocol {
   }
 
   func getSettingsItems() {
-    let settingsItems = dimensionTypes.map { dimension in
+    let settingsItems: [SettingsItem] = dimensionTypes.compactMap { dimension in
       let metrics: [String] = getMetrics(for: dimension)
 
       guard let userDefaultsSymbol = userDefaultsService.getMetricType(for: dimension),
         let symbol = MetricSymbols(rawValue: userDefaultsSymbol.rawValue),
         let selectedIndex = metrics.firstIndex(of: symbol.rawValue)
-      else { return SettingsItem(title: "", index: 1, metrics: []) }
+      else { return nil }
 
       return SettingsItem(title: dimension.rawValue, index: selectedIndex, metrics: getMetrics(for: dimension))
     }

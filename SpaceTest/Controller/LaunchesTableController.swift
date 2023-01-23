@@ -47,7 +47,7 @@ final class LaunchesTableController: UITableViewController {
   }
 }
 
-// MARK: - Presenter
+// MARK: - LaunchesTableControllerProtocol
 extension LaunchesTableController: LaunchesTableControllerProtocol {
   func success(with launches: [LaunchItem]) {
     self.items = launches

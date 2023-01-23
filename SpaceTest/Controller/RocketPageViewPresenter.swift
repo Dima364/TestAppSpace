@@ -13,29 +13,27 @@ protocol RocketPageViewControllerProtocol: AnyObject {
 }
 
 protocol RocketPageViewPresenterProtocol: AnyObject {
-  var networkService: NetworkServiceProtocol { get }
-  var userDefaultsService: UserDefaultsServiceProtocol { get }
-  func setDefaultSettings()
   func setControllers()
 }
 
 final class RocketPageViewPresenter: RocketPageViewPresenterProtocol {
-  func setDefaultSettings() {
-    self.userDefaultsService.makeSettingsDefaults()
-  }
-
   weak var view: RocketPageViewControllerProtocol?
-  var userDefaultsService: UserDefaultsServiceProtocol
-  var networkService: NetworkServiceProtocol
+  private let userDefaultsService: UserDefaultsServiceProtocol
+  private let networkService: NetworkServiceProtocol
 
   init(
-    view: RocketPageViewControllerProtocol,
+    view: RocketPageViewControllerProtocol?,
     userDefaultsService: UserDefaultsServiceProtocol,
     networkService: NetworkServiceProtocol
   ) {
     self.view = view
     self.userDefaultsService = userDefaultsService
     self.networkService = networkService
+    setDefaultSettings()
+  }
+  
+  func setDefaultSettings() {
+    self.userDefaultsService.makeSettingsDefaults()
   }
 
   func setControllers() {

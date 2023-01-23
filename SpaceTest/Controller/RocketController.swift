@@ -22,29 +22,29 @@ final class RocketController: UIViewController {
 
   @IBSegueAction
   func segueLaunches(_ coder: NSCoder) -> LaunchesTableController? {
-    guard let view = LaunchesTableController(coder: coder) else { return nil }
+    let view = LaunchesTableController(coder: coder)
     let presenter = LaunchesPresenter(
       view: view,
       networkService: NetworkService(),
       rocketId: presenter.rocketId,
       rocketName: presenter.rocketName
     )
-    view.presenter = presenter
+    view?.presenter = presenter
     return view
   }
 
   @IBSegueAction
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
-    guard let view = SettingsController(coder: coder) else { return nil }
-    view.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
+    let view = SettingsController(coder: coder)
+    view?.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
 
-    view.settingsUpdate = { [weak self] in
+    view?.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }
     return view
   }
 
-  private func applySnapshots(withSections sections: [Section]) {
+  private func applySnapshots(with sections: [Section]) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Section.Item>()
 
     for section in sections {
@@ -168,9 +168,9 @@ extension RocketController {
   }
 }
 
-// MARK: - Presenter
+// MARK: - RocketControllerProtocol
 extension RocketController: RocketControllerProtocol {
   func present(from sections: [Section]) {
-    applySnapshots(withSections: sections)
+    applySnapshots(with: sections)
   }
 }

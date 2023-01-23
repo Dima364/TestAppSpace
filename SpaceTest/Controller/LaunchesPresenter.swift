@@ -23,7 +23,7 @@ final class LaunchesPresenter: LaunchesPresenterProtocol {
   weak var view: LaunchesTableControllerProtocol?
   let rocketName: String
 
-  init(view: LaunchesTableControllerProtocol, networkService: NetworkServiceProtocol, rocketId: String, rocketName: String) {
+  init(view: LaunchesTableControllerProtocol?, networkService: NetworkServiceProtocol, rocketId: String, rocketName: String) {
     self.view = view
     self.rocketName = rocketName
     self.rocketId = rocketId
