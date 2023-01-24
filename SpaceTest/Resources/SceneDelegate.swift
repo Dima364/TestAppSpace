@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       let view = RocketPageViewController(coder: coder)
       let userDefaultsService = UserDefaultsService()
       let networkService = NetworkService()
-      view?.presenter = RocketPageViewPresenter(view: view, userDefaultsService: userDefaultsService, networkService: networkService)
+      view?.presenter = RocketPageViewPresenter(userDefaultsService: userDefaultsService, networkService: networkService)
+      view?.presenter.view = view
       return view
     }
 

@@ -2,3 +2,7 @@
 SpaceTest.xcodeproj/project.xcworkspace/xcuserdata/dmitrijpomin.xcuserdatad/UserInterfaceState.xcuserstate
 *.xcuserstate
 *.xcuserstate
+*.xcbkptlist
+*.xcuserstate
+SpaceTest/.DS_Store
+.DS_Store

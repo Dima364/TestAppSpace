@@ -14,16 +14,16 @@ protocol SettingsControllerProtocol: AnyObject {
 protocol SettingsPresenterProtocol: AnyObject {
   func getSettingsItems()
   func saveChanges(dimension: String, metric: String)
+  var view: SettingsControllerProtocol? { get set }
 }
 
 final class SettingsPresenter: SettingsPresenterProtocol {
+  weak var view: SettingsControllerProtocol?
   private let userDefaultsService: UserDefaultsServiceProtocol
   private let dimensionTypes = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
-  weak var view: SettingsControllerProtocol?
 
   init(view: SettingsControllerProtocol?, userDefaultsService: UserDefaultsServiceProtocol) {
     self.userDefaultsService = userDefaultsService
-    self.view = view
   }
 
   private func getMetrics(for hint: Hints) -> [String] {

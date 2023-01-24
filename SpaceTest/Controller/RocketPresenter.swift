@@ -12,6 +12,7 @@ protocol RocketControllerProtocol: AnyObject {
 }
 
 protocol RocketPresenterProtocol: AnyObject {
+  var view: RocketControllerProtocol? { get set }
   var rocketName: String { get }
   var rocketId: String { get }
   func getSections()
@@ -29,9 +30,8 @@ final class RocketPresenter: RocketPresenterProtocol {
   private let rocketSectionCreator: RocketSectionCreatorProtocol
   weak var view: RocketControllerProtocol?
 
-  init(rocketRawData: Rocket, view: RocketControllerProtocol, rocketSectionCreator: RocketSectionCreatorProtocol) {
+  init(rocketRawData: Rocket, rocketSectionCreator: RocketSectionCreatorProtocol) {
     self.rocketRawData = rocketRawData
-    self.view = view
     self.rocketSectionCreator = rocketSectionCreator
     self.rocketId = rocketRawData.id
     self.rocketName = rocketRawData.name

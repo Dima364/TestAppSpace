@@ -9,7 +9,7 @@ final class RocketController: UIViewController {
   @IBOutlet private var collectionView: UICollectionView!
   private lazy var dataSource = configureDataSource()
   var onChangeReloadList: (() -> Void)?
-  var presenter: RocketPresenter!
+  var presenter: RocketPresenterProtocol!
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -29,6 +29,7 @@ final class RocketController: UIViewController {
       rocketId: presenter.rocketId,
       rocketName: presenter.rocketName
     )
+    presenter.view = view
     view?.presenter = presenter
     return view
   }
@@ -37,7 +38,8 @@ final class RocketController: UIViewController {
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
     let view = SettingsController(coder: coder)
     view?.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
-
+    view?.presenter.view = view
+    
     view?.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }

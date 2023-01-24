@@ -28,9 +28,9 @@ final class RocketPageViewController: UIPageViewController {
 
         rocketController.presenter = RocketPresenter(
           rocketRawData: rocket,
-          view: rocketController,
           rocketSectionCreator: RocketSectionCreator(userDefaultsService: UserDefaultsService())
           )
+        rocketController.presenter.view = rocketController
 
         rocketController.onChangeReloadList = {
           var currentIndex: Int {
