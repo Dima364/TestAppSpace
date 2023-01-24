@@ -6,35 +6,17 @@
 //
 
 import UIKit
+protocol RocketSectionCreatorProtocol: AnyObject {
+  func makeSections(data: Rocket) -> [Section]
+}
 
-final class RocketSectionCreator {
+final class RocketSectionCreator: RocketSectionCreatorProtocol {
   typealias Item = Section.Item
+  private let userDefaultsService: UserDefaultsServiceProtocol
 
-  // MARK: - hints descriptions
-  enum Hints: String, CaseIterable {
-    case height = "Высота"
-    case diameter = "Диаметр"
-    case mass = "Масса"
-    case payloadWeight = "Нагрузка"
-    case firstFlight = "Первый запуск"
-    case country = "Страна"
-    case costPerLaunch = "Стоимость запуска"
-    case firstStage = "Первая ступень"
-    case engines = "Количество двигателей"
-    case fuelAmountTons = "Количество топлива"
-    case burnTimeSec = "Время сгорания"
-    case secondStage = "Вторая ступень"
+  init(userDefaultsService: UserDefaultsServiceProtocol) {
+    self.userDefaultsService = userDefaultsService
   }
-
-  // MARK: - symbols for settings
-  enum MetricSymbols: String, CaseIterable {
-    case kilos = "kg"
-    case pounds = "lb"
-    case meters = "m"
-    case feet = "ft"
-  }
-
-  private let userDefaultsService = UserDefaultsService()
 
   private func getHorizontalItem(forDimension dimension: Hints, data: Rocket) -> Item {
     guard let metricSymbol = userDefaultsService.getMetricType(for: dimension) else {

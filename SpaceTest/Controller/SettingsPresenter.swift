@@ -8,16 +8,13 @@
 import Foundation
 
 protocol SettingsControllerProtocol: AnyObject {
-  typealias Hints = RocketSectionCreator.Hints
-  func setSettingsItems(with items: [SettingsItem])
+  func present(with items: [SettingsItem])
 }
 
 protocol SettingsPresenterProtocol: AnyObject {
-  typealias Hints = RocketSectionCreator.Hints
-  typealias MetricSymbols = RocketSectionCreator.MetricSymbols
-
   func getSettingsItems()
   func saveChanges(dimension: String, metric: String)
+  var view: SettingsControllerProtocol? { get set }
 }
 
 final class SettingsPresenter: SettingsPresenterProtocol {
@@ -25,9 +22,8 @@ final class SettingsPresenter: SettingsPresenterProtocol {
   private let userDefaultsService: UserDefaultsServiceProtocol
   private let dimensionTypes = [Hints.height, Hints.diameter, Hints.mass, Hints.payloadWeight]
 
-  init(view: SettingsControllerProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+  init(view: SettingsControllerProtocol?, userDefaultsService: UserDefaultsServiceProtocol) {
     self.userDefaultsService = userDefaultsService
-    self.view = view
   }
 
   private func getMetrics(for hint: Hints) -> [String] {
@@ -44,18 +40,17 @@ final class SettingsPresenter: SettingsPresenterProtocol {
   }
 
   func getSettingsItems() {
-
-    let settingsItems = dimensionTypes.map { dimension in
+    let settingsItems: [SettingsItem] = dimensionTypes.compactMap { dimension in
       let metrics: [String] = getMetrics(for: dimension)
 
       guard let userDefaultsSymbol = userDefaultsService.getMetricType(for: dimension),
         let symbol = MetricSymbols(rawValue: userDefaultsSymbol.rawValue),
         let selectedIndex = metrics.firstIndex(of: symbol.rawValue)
-      else { return SettingsItem(title: "", index: 1, metrics: []) }
+      else { return nil }
 
       return SettingsItem(title: dimension.rawValue, index: selectedIndex, metrics: getMetrics(for: dimension))
     }
-    view?.setSettingsItems(with: settingsItems)
+    view?.present(with: settingsItems)
   }
 
   func saveChanges(dimension: String, metric: String) {

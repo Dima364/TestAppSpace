@@ -7,12 +7,8 @@
 import UIKit
 
 final class SettingsController: UIViewController {
-  private typealias Hints = RocketSectionCreator.Hints
-  private typealias MetricSymbols = RocketSectionCreator.MetricSymbols
-
   private var items: [SettingsItem] = []
   var presenter: SettingsPresenterProtocol!
-
   var settingsUpdate: (() -> Void)?
 
   @IBOutlet private var tableView: UITableView!
@@ -24,10 +20,6 @@ final class SettingsController: UIViewController {
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-  }
-
-  deinit {
-    print("settingsController deinit")
   }
 
   override func viewDidLoad() {
@@ -61,8 +53,9 @@ extension SettingsController: UITableViewDataSource {
   }
 }
 
+// MARK: - SettingsControllerProtocol
 extension SettingsController: SettingsControllerProtocol {
-  func setSettingsItems(with items: [SettingsItem]) {
+  func present(with items: [SettingsItem]) {
     self.items = items
     tableView.reloadData()
   }

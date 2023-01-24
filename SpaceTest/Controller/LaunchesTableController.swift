@@ -8,13 +8,8 @@
 import UIKit
 
 final class LaunchesTableController: UITableViewController {
-
-  var presenter: LaunchesPresenterProtocol!
   private var items: [LaunchItem] = []
-
-  deinit {
-    print("launchesTableController deinit")
-  }
+  var presenter: LaunchesPresenterProtocol!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,6 +47,7 @@ final class LaunchesTableController: UITableViewController {
   }
 }
 
+// MARK: - LaunchesTableControllerProtocol
 extension LaunchesTableController: LaunchesTableControllerProtocol {
   func success(with launches: [LaunchItem]) {
     self.items = launches

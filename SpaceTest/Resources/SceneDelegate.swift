@@ -20,7 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let storyboard = UIStoryboard(name: "Main", bundle: .main)
 
     let pageViewController = storyboard.instantiateViewController(identifier: "page") { coder in
-      RocketPageViewController(coder: coder)
+      let view = RocketPageViewController(coder: coder)
+      let userDefaultsService = UserDefaultsService()
+      let networkService = NetworkService()
+      view?.presenter = RocketPageViewPresenter(userDefaultsService: userDefaultsService, networkService: networkService)
+      view?.presenter.view = view
+      return view
     }
 
     let initialNavigationController = UINavigationController(rootViewController: pageViewController)

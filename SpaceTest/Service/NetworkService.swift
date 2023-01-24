@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
   func getLaunches(forRocket rocket: String, completion: @escaping (Result<RocketLaunch, Error>) -> Void)
+  func getRockets(completion: @escaping (Result<[Rocket], Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {

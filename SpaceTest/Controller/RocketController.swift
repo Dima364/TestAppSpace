@@ -6,57 +6,47 @@
 import UIKit
 
 final class RocketController: UIViewController {
-
-  private let rawModel: Rocket
-  private let sectionCreator: RocketSectionCreator
-  private lazy var dataSource = configureDataSource()
-
   @IBOutlet private var collectionView: UICollectionView!
-
+  private lazy var dataSource = configureDataSource()
   var onChangeReloadList: (() -> Void)?
+  var presenter: RocketPresenterProtocol!
 
-  init?(coder: NSCoder, rocketData: Rocket, sectionCreator: RocketSectionCreator = RocketSectionCreator()) {
-    self.sectionCreator = sectionCreator
-    self.rawModel = rocketData
-    super.init(coder: coder)
-    print("rocketController init \(self.rawModel.name)/ \(Unmanaged.passUnretained(self))")
-  }
-
-  @available (*, unavailable)
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  deinit {
-    print("rocketController deinit \(self.rawModel.name) / \(Unmanaged.passUnretained(self))")
+    super.init(coder: coder)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    applySnapshots(withSections: sectionCreator.makeSections(data: rawModel))
+    self.presenter.getSections()
   }
 
   @IBSegueAction
   func segueLaunches(_ coder: NSCoder) -> LaunchesTableController? {
-    guard let view = LaunchesTableController(coder: coder) else { return nil }
-    let presenter = LaunchesPresenter(view: view, networkService: NetworkService(), rocketId: rawModel.id, rocketName: rawModel.name)
-    view.presenter = presenter
+    let view = LaunchesTableController(coder: coder)
+    let presenter = LaunchesPresenter(
+      view: view,
+      networkService: NetworkService(),
+      rocketId: presenter.rocketId,
+      rocketName: presenter.rocketName
+    )
+    presenter.view = view
+    view?.presenter = presenter
     return view
   }
 
   @IBSegueAction
   func segueSettings(_ coder: NSCoder) -> SettingsController? {
-    guard let view = SettingsController(coder: coder) else { return nil }
-    view.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
-
-    view.settingsUpdate = { [weak self] in
+    let view = SettingsController(coder: coder)
+    view?.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
+    view?.presenter.view = view
+    
+    view?.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }
-
     return view
   }
 
-  private func applySnapshots(withSections sections: [Section]) {
+  private func applySnapshots(with sections: [Section]) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Section.Item>()
 
     for section in sections {
@@ -177,5 +167,12 @@ extension RocketController {
       }
       return section
     }
+  }
+}
+
+// MARK: - RocketControllerProtocol
+extension RocketController: RocketControllerProtocol {
+  func present(from sections: [Section]) {
+    applySnapshots(with: sections)
   }
 }
