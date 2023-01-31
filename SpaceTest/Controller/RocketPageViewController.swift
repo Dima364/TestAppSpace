@@ -9,6 +9,8 @@ import UIKit
 
 final class RocketPageViewController: UIPageViewController {
   private var controllerList = [UIViewController]()
+
+  // swiftlint: disable:next: implicitly_unwrapped_optional
   var presenter: RocketPageViewPresenterProtocol!
 
   required init?(coder: NSCoder) {
@@ -24,7 +26,7 @@ final class RocketPageViewController: UIPageViewController {
   private func setControllersList(fromRockets rockets: [Rocket], withPosition position: Int = 0) {
     controllerList = rockets.compactMap { rocket in
       self.storyboard?.instantiateViewController(identifier: "mainVC") { coder in
-        guard let rocketController = RocketController(coder: coder) else { return UIViewController() }
+        guard let rocketController = RocketController(coder: coder) else { return nil }
 
         rocketController.presenter = RocketPresenter(
           rocketRawData: rocket,

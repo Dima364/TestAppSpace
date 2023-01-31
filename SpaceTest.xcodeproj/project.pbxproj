@@ -164,6 +164,7 @@
 				399D0BD2286827BE008430F0 /* Resources */,
 				399D0BD1286827AF008430F0 /* Storyboards */,
 				399D0BD0286827A7008430F0 /* Controller */,
+				39C8063C298988CF002E52DE /* Presenter */,
 				399D0BCF2868279F008430F0 /* Model */,
 				399D0BCE28682793008430F0 /* View */,
 			);
@@ -199,13 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				3996200A286D27A300D38313 /* RocketPageViewController.swift */,
-				394118AC297AF89E00FE839D /* RocketPageViewPresenter.swift */,
 				399D0BBE28682781008430F0 /* RocketController.swift */,
-				394118A6297AF5D300FE839D /* RocketPresenter.swift */,
 				39DB61C829220FBD0015BBC8 /* LaunchesTableController.swift */,
-				394118942972B8F900FE839D /* LaunchesPresenter.swift */,
 				39B8AF35287F2AC600649592 /* SettingsController.swift */,
-				394118982979876A00FE839D /* SettingsPresenter.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,6 +245,17 @@
 				39AF9BA92951EB0000A64C9E /* NetworkService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		39C8063C298988CF002E52DE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				394118AC297AF89E00FE839D /* RocketPageViewPresenter.swift */,
+				394118A6297AF5D300FE839D /* RocketPresenter.swift */,
+				394118942972B8F900FE839D /* LaunchesPresenter.swift */,
+				394118982979876A00FE839D /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		39ED885429266F0200ED0E5A /* Supplements */ = {

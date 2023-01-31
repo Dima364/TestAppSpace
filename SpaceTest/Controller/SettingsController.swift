@@ -8,6 +8,8 @@ import UIKit
 
 final class SettingsController: UIViewController {
   private var items: [SettingsItem] = []
+
+  // swiftlint: disable:next: implicitly_unwrapped_optional
   var presenter: SettingsPresenterProtocol!
   var settingsUpdate: (() -> Void)?
 
