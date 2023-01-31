@@ -9,6 +9,8 @@ final class RocketController: UIViewController {
   @IBOutlet private var collectionView: UICollectionView!
   private lazy var dataSource = configureDataSource()
   var onChangeReloadList: (() -> Void)?
+
+  // swiftlint: disable:next: implicitly_unwrapped_optional
   var presenter: RocketPresenterProtocol!
 
   required init?(coder: NSCoder) {
@@ -39,7 +41,7 @@ final class RocketController: UIViewController {
     let view = SettingsController(coder: coder)
     view?.presenter = SettingsPresenter(view: view, userDefaultsService: UserDefaultsService())
     view?.presenter.view = view
-    
+
     view?.settingsUpdate = { [weak self] in
       self?.onChangeReloadList?()
     }

@@ -9,6 +9,8 @@ import UIKit
 
 final class LaunchesTableController: UITableViewController {
   private var items: [LaunchItem] = []
+
+  // swiftlint: disable:next: implicitly_unwrapped_optional
   var presenter: LaunchesPresenterProtocol!
 
   override func viewDidLoad() {
