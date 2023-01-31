@@ -9,3 +9,6 @@ SpaceTest/.DS_Store
 SpaceTest/Controller/.DS_Store
 .DS_Store
 SpaceTest/Controller/.DS_Store
+SpaceTest.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+SpaceTest.xcodeproj/xcuserdata/dmitrijpomin.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+*.xcbkptlist
